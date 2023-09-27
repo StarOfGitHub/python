@@ -1,0 +1,45 @@
+###########
+# BUILDER #
+###########
+
+# pull official base image
+FROM python:3.8-buster as builder
+
+# set work directory
+WORKDIR /usr/src/app
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Install dependencies
+COPY ./dependencies/pip_py3.txt .
+RUN pip install --upgrade pip
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r pip_py3.txt
+
+#########
+# FINAL #
+#########
+
+# pull official base image
+FROM python:3.8-buster
+
+# create directory for the app user
+ENV APP_HOME=/app
+RUN mkdir -p $APP_HOME
+WORKDIR $APP_HOME
+
+# install bower
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get update && apt-get install -y nodejs
+RUN npm i -g bower
+
+# install dependencies
+COPY --from=builder /usr/src/app/wheels /wheels
+COPY --from=builder /usr/src/app/pip_py3.txt .
+RUN pip install --upgrade pip setuptools
+RUN pip install --no-cache /wheels/*
+RUN rm -rf /wheels
+
+# copy project
+COPY . $APP_HOME

@@ -1,0 +1,708 @@
+[
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 1,
+    "fields": {
+        "name": "Generated password",
+        "slug": "generated-password",
+        "message_text_template": "Dear [[contact]],\r\n\r\nYou have requested a password change! Your newly generated password is:\r\n\r\n[[password]]\r\n\r\nWe recommend you to change this password on your next login.\r\n\r\nKind regards, R3sourcer team",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 2,
+    "fields": {
+        "name": "Job Offer Placement Confirmation",
+        "slug": "job-offer-placement-confirmation",
+        "message_text_template": "[[candidate_contact]] - SHIFT CONFIRMED! [[target_date_and_time]] Start!\r\n[[job__jobsite]].\r\n[[timesheet__supervisor]], [[timesheet__supervisor__contact__phone_mobile]].\r\nMake sure you arrive 10mins early have full PPE, white card, ID and relevant licences with you. Contact site foreman upon arrival.\r\nAny issues call [[master_company]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 3,
+    "fields": {
+        "name": "Mobile Phone Verification",
+        "slug": "mobile-phone-verification",
+        "message_text_template": "Dear [[contact]], thank you for registering as Candidate with [[master_company]]. Please verify your phone by replying with YES. Best regards, [[manager]].",
+        "reply_timeout": 60,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 4,
+    "fields": {
+        "name": "Login SMS Token",
+        "slug": "login-sms-token",
+        "message_text_template": "Mobile login for [[contact]]. Please follow this link: [[auth_url]]. If the link has expired please request a new one by replying with LOGIN or visiting [[project_url]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 5,
+    "fields": {
+        "name": "Candidate TimeSheet Hours (old shift)",
+        "slug": "candidate-timesheet-hours-old",
+        "message_text_template": "Hello [[candidate_contact]] please click on the link [[get_fill_time_sheet_url]] to submit your timesheet for hours worked on [[shift_end_date]]. Once you have submitted your hours, your site foreman today will be asked to approve them. Please make sure you are accurate and honest or your hours will not get approved. If you are unable to open the link, please submit your hours on a computer: [[site_url]] -> Customer Access. Thank you.",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 6,
+    "fields": {
+        "name": "Job Offer 1st",
+        "slug": "job-offer-1st",
+        "message_text_template": "[[candidate_contact]]. JOB OFFER!\r\n[[job_translation]] in [[jobsite_address__city__name]]/[[jobsite_address__state__name]].\r\nShift starts at [[target_date_and_time]].\r\nReply YES to confirm or NO to decline.\r\n[[master_company]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 360,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 7,
+    "fields": {
+        "name": "Candidate JO Cancelled <1 hrs",
+        "slug": "candidate-jo-cancelled-1-hrs",
+        "message_text_template": "[[candidate_contact]],\r\nThe [[job_translation]] shift starting at [[target_date_and_time]] for [[job__jobsite]] job booking has been CANCELLED. Regards, [[candidate_contact__recruitment_agent__contact]], [[candidate_contact__recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 0,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 8,
+    "fields": {
+        "name": "Supervisor TimeSheet Sign Reminder",
+        "slug": "supervisor-timesheet-sign-reminder",
+        "message_text_template": "Hi [[supervisor]], you still have outstanding timesheets to approve, please action immediately by clicking the link [[get_url]] or login via your computer to  [[site_url]].\r\nPlease note failure to do so will affect worker wages and your rates for the next order.\r\nAny issues please contact [[portfolio_manager]] [[portfolio_manager__contact__phone_mobile]].\r\nThank you",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 9,
+    "fields": {
+        "name": "Candidate TimeSheet Agree",
+        "slug": "candidate-timesheet-agree",
+        "message_text_template": "[[candidate_contact]],\r\nUnfortunately your time sheet for [[shift_start_date]] was REJECTED by [[supervisor]]. Mobile: [[supervisor__contact__phone_mobile]]\r\nStart time: [[shift_start_time]]\r\nFinish time: [[shift_end_time]]\r\nBreak: [[shift_break_hours]]\r\nTotal: [[shift_worked_hours]]\r\nIf you do not agree to time sheet correction, please contact site manager in [[supervisor_timeout]] hours to correct the timesheet.\r\nRegards, [[candidate_contact__recruitment_agent__contact]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 10,
+    "fields": {
+        "name": "Job Offer Recurring",
+        "slug": "job-offer-recurring",
+        "message_text_template": "[[candidate_contact]].\r\nAre you able to work at the same site? [[job_translation]].\r\n[[job__jobsite__get_address]]\r\nShift starts at [[target_date_and_time]]. \r\nReply YES to confirm or NO to decline.\r\n[[master_company]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 360,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 11,
+    "fields": {
+        "name": "Contact Mobile Phone Verification",
+        "slug": "contact-mobile-phone-verification",
+        "message_text_template": "Dear [[contact]], thank you for registering with [[master_company]]. Please verify your phone by replying with YES. Best regards, [[manager]].",
+        "reply_timeout": 60,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 12,
+    "fields": {
+        "name": "Job Confirmed",
+        "slug": "job-confirmed",
+        "message_text_template": "[[supervisor__contact]]\r\nJOB CONFIRMED for [[get_confirmation_string]] at [[jobsite]] jobsite. Order link: [[auth_url]].\r\nAny issues please call [[portfolio_manager]], [[portfolio_manager__contact__phone_mobile]] thanks!",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 13,
+    "fields": {
+        "name": "Candidate TimeSheet Hours",
+        "slug": "candidate-timesheet-hours",
+        "message_text_template": "[[candidate_contact]] please click on the link [[get_fill_time_sheet_url]] to submit your timesheet for hours worked today. If you are unable to open the link, please submit your hours on a computer: [[site_url]] . Thank you.",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 14,
+    "fields": {
+        "name": "Candidate JO Cancelled",
+        "slug": "candidate-jo-cancelled",
+        "message_text_template": "[[candidate_contact]],\r\nThe [[job_translation]] shift starting at [[target_date_and_time]] for [[job__jobsite]] job has been CANCELLED. We may send you another offer. Regards, [[candidate_contact__recruitment_agent__contact]], [[candidate_contact__recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 0,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 15,
+    "fields": {
+        "name": "Job Offer Rejection",
+        "slug": "job-offer-rejection",
+        "message_text_template": "[[candidate_contact]],\r\nUnfortunately, the shift for [[job__jobsite]] at [[target_date_and_time]] has been filled!\r\nBe ready for more offers... [[master_company]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 0,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 16,
+    "fields": {
+        "name": "Candidate Going To Work",
+        "slug": "candidate-going-to-work",
+        "message_text_template": "[[candidate_contact]].\r\nAre you on your way to work? Confirm now by replying YES.\r\nFailure to reply in 30 minutes will result in your shift being cancelled!\r\nMake sure you have your white card and full PPE and you are on time.\r\nThanks, [[candidate_contact__recruitment_agent__contact]], [[candidate_contact__recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 30,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 17,
+    "fields": {
+        "name": "Supervisor TimeSheet Sign",
+        "slug": "supervisor-timesheet-sign",
+        "message_text_template": "Hi [[supervisor]] please approve or amend hours for your worker(s) by clinking the link [[get_url]] Please do so urgently so that workers can get paid for hours worked. If you cannot access the link simply reply LOGIN to this SMS and a new link will be sent to you.\r\nYou can also approve hours online: [[site_url]]. Thank you!",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 18,
+    "fields": {
+        "name": "Candidate Going To Work",
+        "slug": "candidate-going-to-work",
+        "message_text_template": "[[candidate_contact]].\r\nAre you on your way to work? Confirm now by replying YES.\r\nFailure to reply in 30 minutes will result in your shift being cancelled!\r\nMake sure you have your white card and full PPE and you are on time.\r\nThanks, [[candidate_contact__recruitment_agent__contact]], [[candidate_contact__recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 30,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 19,
+    "fields": {
+        "name": "Candidate JO Cancelled",
+        "slug": "candidate-jo-cancelled",
+        "message_text_template": "[[candidate_contact]],\r\nThe [[job_translation]] shift starting at [[target_date_and_time]] for [[job__jobsite]] job has been CANCELLED. We may send you another offer. Regards, [[candidate_contact__recruitment_agent__contact]], [[candidate_contact__recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 0,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 20,
+    "fields": {
+        "name": "Candidate JO Cancelled <1 hrs",
+        "slug": "candidate-jo-cancelled-1-hrs",
+        "message_text_template": "[[candidate_contact]],\r\nThe [[job_translation]] shift starting at [[target_date_and_time]] for [[job__jobsite]] job booking has been CANCELLED. Regards, [[candidate_contact__recruitment_agent__contact]], [[candidate_contact__recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 0,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 21,
+    "fields": {
+        "name": "Candidate TimeSheet Agree",
+        "slug": "candidate-timesheet-agree",
+        "message_text_template": "[[candidate_contact]],\r\nUnfortunately your time sheet for [[shift_start_date]] was REJECTED by [[supervisor]]. Mobile: [[supervisor__contact__phone_mobile]]\r\nStart time: [[shift_start_time]]\r\nFinish time: [[shift_end_time]]\r\nBreak: [[shift_break_hours]]\r\nTotal: [[shift_worked_hours]]\r\nIf you do not agree to time sheet correction, please contact site manager in [[supervisor_timeout]] hours to correct the timesheet.\r\nRegards, [[candidate_contact__recruitment_agent__contact]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 22,
+    "fields": {
+        "name": "Candidate TimeSheet Hours",
+        "slug": "candidate-timesheet-hours",
+        "message_text_template": "[[candidate_contact]] please click on the link [[get_fill_time_sheet_url]] to submit your timesheet for hours worked today. If you are unable to open the link, please submit your hours on a computer: [[site_url]] . Thank you.",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 23,
+    "fields": {
+        "name": "Candidate TimeSheet Hours (old shift)",
+        "slug": "candidate-timesheet-hours-old",
+        "message_text_template": "Hello [[candidate_contact]] please click on the link [[get_fill_time_sheet_url]] to submit your timesheet for hours worked on [[shift_end_date]]. Once you have submitted your hours, your site foreman today will be asked to approve them. Please make sure you are accurate and honest or your hours will not get approved. If you are unable to open the link, please submit your hours on a computer: [[site_url]] -> Customer Access. Thank you.",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 24,
+    "fields": {
+        "name": "Contact Mobile Phone Verification",
+        "slug": "contact-mobile-phone-verification",
+        "message_text_template": "Dear [[contact]], thank you for registering with [[master_company]]. Please verify your phone by replying with YES. Best regards, [[manager]].",
+        "reply_timeout": 60,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 25,
+    "fields": {
+        "name": "Generated password",
+        "slug": "generated-password",
+        "message_text_template": "Dear [[contact]],\r\n\r\nYou have requested a password change! Your newly generated password is:\r\n\r\n[[password]]\r\n\r\nWe recommend you to change this password on your next login.\r\n\r\nKind regards, R3sourcer team",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 26,
+    "fields": {
+        "name": "Job Confirmed",
+        "slug": "job-confirmed",
+        "message_text_template": "[[supervisor__contact]]\r\nJOB CONFIRMED for [[get_confirmation_string]] at [[jobsite]] jobsite. Order link: [[auth_url]].\r\nAny issues please call [[portfolio_manager]], [[portfolio_manager__contact__phone_mobile]] thanks!",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 27,
+    "fields": {
+        "name": "Job Offer 1st",
+        "slug": "job-offer-1st",
+        "message_text_template": "[[candidate_contact]]. JOB OFFER!\r\n[[job_translation]] in [[jobsite_address__city__name]]/[[jobsite_address__state__name]].\r\nShift starts at [[target_date_and_time]].\r\nReply YES to confirm or NO to decline.\r\n[[master_company]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 360,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 28,
+    "fields": {
+        "name": "Job Offer Placement Confirmation",
+        "slug": "job-offer-placement-confirmation",
+        "message_text_template": "[[candidate_contact]] - SHIFT CONFIRMED! [[target_date_and_time]] Start!\r\n[[job__jobsite]], [[job__jobsite__get_address]].\r\n[[timesheet__supervisor]], [[timesheet__supervisor__contact__phone_mobile]].\r\nMake sure you arrive 10mins early have full PPE, white card, ID and relevant licences with you. Contact site foreman upon arrival.\r\nAny issues call [[master_company]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 29,
+    "fields": {
+        "name": "Job Offer Recurring",
+        "slug": "job-offer-recurring",
+        "message_text_template": "[[candidate_contact]].\r\nAre you able to work at the same site? [[job_translation]].\r\n[[job__jobsite__get_address]]\r\nShift starts at [[target_date_and_time]]. \r\nReply YES to confirm or NO to decline.\r\n[[master_company]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 360,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 30,
+    "fields": {
+        "name": "Job Offer Rejection",
+        "slug": "job-offer-rejection",
+        "message_text_template": "[[candidate_contact]],\r\nUnfortunately, the shift for [[job__jobsite]] at [[target_date_and_time]] has been filled!\r\nBe ready for more offers... [[master_company]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 0,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 31,
+    "fields": {
+        "name": "Login SMS Token",
+        "slug": "login-sms-token",
+        "message_text_template": "Mobile login for [[contact]]. Please follow this link: [[auth_url]]. If the link has expired please request a new one by replying with LOGIN or visiting [[project_url]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 32,
+    "fields": {
+        "name": "Mobile Phone Verification",
+        "slug": "mobile-phone-verification",
+        "message_text_template": "Dear [[contact]], thank you for registering as Candidate with [[master_company]]. Please verify your phone by replying with YES. Best regards, [[manager]].",
+        "reply_timeout": 60,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 33,
+    "fields": {
+        "name": "Supervisor TimeSheet Sign",
+        "slug": "supervisor-timesheet-sign",
+        "message_text_template": "Hi [[supervisor]] please approve or amend hours for your worker(s) by clinking the link [[get_url]] Please do so urgently so that workers can get paid for hours worked. If you cannot access the link simply reply LOGIN to this SMS and a new link will be sent to you.\r\nYou can also approve hours online: [[site_url]]. Thank you!",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 34,
+    "fields": {
+        "name": "Supervisor TimeSheet Sign Reminder",
+        "slug": "supervisor-timesheet-sign-reminder",
+        "message_text_template": "Hi [[supervisor]], you still have outstanding timesheets to approve, please action immediately by clicking the link [[get_url]] or login via your computer to  [[site_url]].\r\nPlease note failure to do so will affect worker wages and your rates for the next order.\r\nAny issues please contact [[portfolio_manager]] [[portfolio_manager__contact__phone_mobile]].\r\nThank you",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 37,
+    "fields": {
+        "name": "Candidate Going To Work",
+        "slug": "candidate-going-to-work",
+        "message_text_template": "[[candidate_contact]].\r\nAre you on your way to work? Confirm now by replying YES.\r\nFailure to reply in 30 minutes will result in your shift being cancelled!\r\nMake sure you have your white card and full PPE and you are on time.\r\nThanks, [[candidate_contact__recruitment_agent__contact]], [[candidate_contact__recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 30,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 38,
+    "fields": {
+        "name": "Candidate JO Cancelled",
+        "slug": "candidate-jo-cancelled",
+        "message_text_template": "[[candidate_contact]],\r\nThe [[job_translation]] shift starting at [[target_date_and_time]] for [[job__jobsite]] job has been CANCELLED. We may send you another offer. Regards, [[candidate_contact__recruitment_agent__contact]], [[candidate_contact__recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 0,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 39,
+    "fields": {
+        "name": "Candidate JO Cancelled <1 hrs",
+        "slug": "candidate-jo-cancelled-1-hrs",
+        "message_text_template": "[[candidate_contact]],\r\nThe [[job_translation]] shift starting at [[target_date_and_time]] for [[job__jobsite]] job booking has been CANCELLED. Regards, [[candidate_contact__recruitment_agent__contact]], [[candidate_contact__recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 0,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 40,
+    "fields": {
+        "name": "Candidate TimeSheet Agree",
+        "slug": "candidate-timesheet-agree",
+        "message_text_template": "[[candidate_contact]],\r\nUnfortunately your time sheet for [[shift_start_date]] was REJECTED by [[supervisor]]. Mobile: [[supervisor__contact__phone_mobile]]\r\nStart time: [[shift_start_time]]\r\nFinish time: [[shift_end_time]]\r\nBreak: [[shift_break_hours]]\r\nTotal: [[shift_worked_hours]]\r\nIf you do not agree to time sheet correction, please contact site manager in [[supervisor_timeout]] hours to correct the timesheet.\r\nRegards, [[candidate_contact__recruitment_agent__contact]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 41,
+    "fields": {
+        "name": "Candidate TimeSheet Hours",
+        "slug": "candidate-timesheet-hours",
+        "message_text_template": "[[candidate_contact]] please click on the link [[get_fill_time_sheet_url]] to submit your timesheet for hours worked today. If you are unable to open the link, please submit your hours on a computer: [[site_url]] . Thank you.",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 42,
+    "fields": {
+        "name": "Candidate TimeSheet Hours (old shift)",
+        "slug": "candidate-timesheet-hours-old",
+        "message_text_template": "Hello [[candidate_contact]] please click on the link [[get_fill_time_sheet_url]] to submit your timesheet for hours worked on [[shift_end_date]]. Once you have submitted your hours, your site foreman today will be asked to approve them. Please make sure you are accurate and honest or your hours will not get approved. If you are unable to open the link, please submit your hours on a computer: [[site_url]] -> Customer Access. Thank you.",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 43,
+    "fields": {
+        "name": "Contact Mobile Phone Verification",
+        "slug": "contact-mobile-phone-verification",
+        "message_text_template": "Dear [[contact]], thank you for registering with [[master_company]]. Please verify your phone by replying with YES. Best regards, [[manager]].",
+        "reply_timeout": 60,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 44,
+    "fields": {
+        "name": "Generated password",
+        "slug": "generated-password",
+        "message_text_template": "Dear [[contact]],\r\n\r\nYou have requested a password change! Your newly generated password is:\r\n\r\n[[password]]\r\n\r\nWe recommend you to change this password on your next login.\r\n\r\nKind regards, R3sourcer team",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 45,
+    "fields": {
+        "name": "Job Confirmed",
+        "slug": "job-confirmed",
+        "message_text_template": "[[supervisor__contact]]\r\nJOB CONFIRMED for [[get_confirmation_string]] at [[jobsite]] jobsite. Order link: [[auth_url]].\r\nAny issues please call [[portfolio_manager]], [[portfolio_manager__contact__phone_mobile]] thanks!",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 46,
+    "fields": {
+        "name": "Job Offer 1st",
+        "slug": "job-offer-1st",
+        "message_text_template": "[[candidate_contact]]. JOB OFFER!\r\n[[job_translation]] in [[jobsite_address__city__name]]/[[jobsite_address__state__name]].\r\nShift starts at [[target_date_and_time]].\r\nReply YES to confirm or NO to decline.\r\n[[master_company]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 360,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 47,
+    "fields": {
+        "name": "Job Offer Placement Confirmation",
+        "slug": "job-offer-placement-confirmation",
+        "message_text_template": "[[candidate_contact]] - SHIFT CONFIRMED! [[target_date_and_time]] Start!\r\n[[job__jobsite]], [[job__jobsite__get_address]].\r\n[[timesheet__supervisor]], [[timesheet__supervisor__contact__phone_mobile]].\r\nMake sure you arrive 10mins early have full PPE, white card, ID and relevant licences with you. Contact site foreman upon arrival.\r\nAny issues call [[master_company]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 48,
+    "fields": {
+        "name": "Job Offer Recurring",
+        "slug": "job-offer-recurring",
+        "message_text_template": "[[candidate_contact]].\r\nAre you able to work at the same site? [[job_translation]].\r\n[[job__jobsite__get_address]]\r\nShift starts at [[target_date_and_time]]. \r\nReply YES to confirm or NO to decline.\r\n[[master_company]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 360,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 49,
+    "fields": {
+        "name": "Job Offer Rejection",
+        "slug": "job-offer-rejection",
+        "message_text_template": "[[candidate_contact]],\r\nUnfortunately, the shift for [[job__jobsite]] at [[target_date_and_time]] has been filled!\r\nBe ready for more offers... [[master_company]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 0,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 50,
+    "fields": {
+        "name": "Login SMS Token",
+        "slug": "login-sms-token",
+        "message_text_template": "Mobile login for [[contact]]. Please follow this link: [[auth_url]]. If the link has expired please request a new one by replying with LOGIN or visiting [[project_url]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 51,
+    "fields": {
+        "name": "Mobile Phone Verification",
+        "slug": "mobile-phone-verification",
+        "message_text_template": "Dear [[contact]], thank you for registering as Candidate with [[master_company]]. Please verify your phone by replying with YES. Best regards, [[manager]].",
+        "reply_timeout": 60,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 52,
+    "fields": {
+        "name": "Supervisor TimeSheet Sign",
+        "slug": "supervisor-timesheet-sign",
+        "message_text_template": "Hi [[supervisor]] please approve or amend hours for your worker(s) by clinking the link [[get_url]] Please do so urgently so that workers can get paid for hours worked. If you cannot access the link simply reply LOGIN to this SMS and a new link will be sent to you.\r\nYou can also approve hours online: [[site_url]]. Thank you!",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 53,
+    "fields": {
+        "name": "Supervisor TimeSheet Sign Reminder",
+        "slug": "supervisor-timesheet-sign-reminder",
+        "message_text_template": "Hi [[supervisor]], you still have outstanding timesheets to approve, please action immediately by clicking the link [[get_url]] or login via your computer to  [[site_url]].\r\nPlease note failure to do so will affect worker wages and your rates for the next order.\r\nAny issues please contact [[portfolio_manager]] [[portfolio_manager__contact__phone_mobile]].\r\nThank you",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 54,
+    "fields": {
+        "name": "Consent sms message",
+        "slug": "consent-sms-message",
+        "message_text_template": "Hello! R3sourcer (recruitment portal) has gathered your personal information through our job advertisements. Do you consent us sharing your personal details with future employer in order for you to find your dream job? Please reply YES to this sms if you agree! This will trigger candidate exchange and charge company who is buying profile.",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 55,
+    "fields": {
+        "name": "Consent sms message",
+        "slug": "consent-sms-message",
+        "message_text_template": "Hello! R3sourcer (recruitment portal) has gathered your personal information through our job advertisements. Do you consent us sharing your personal details with future employer in order for you to find your dream job? Please reply YES to this sms if you agree! This will trigger candidate exchange and charge company who is buying profile.",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 56,
+    "fields": {
+        "name": "Consent sms message",
+        "slug": "consent-sms-message",
+        "message_text_template": "Hello! R3sourcer (recruitment portal) has gathered your personal information through our job advertisements. Do you consent us sharing your personal details with future employer in order for you to find your dream job? Please reply YES to this sms if you agree! This will trigger candidate exchange and charge company who is buying profile.",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": 57,
+    "fields": {
+        "name": "Consent sms message",
+        "slug": "consent-sms-message",
+        "message_text_template": "Hello! R3sourcer (recruitment portal) has gathered your personal information through our job advertisements. Do you consent us sharing your personal details with future employer in order for you to find your dream job? Please reply YES to this sms if you agree! This will trigger candidate exchange and charge company who is buying profile.",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi"
+  }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": null,
+    "fields": {
+        "name": "Carrier List Offer",
+        "slug": "carrier-list-offer",
+        "message_text_template": "Hello [[candidate_contact]]. Are you ready to do backup [[skill]] work for [[master_company]] from [[target_date_and_time]]? Reply YES to confirm the shift, we will send you Jobsite details later. Regards, [[recruitment_agent]], [[recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 180,
+        "delivery_timeout": 10,
+        "language": "en"
+    }
+},
+{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": null,
+    "fields": {
+        "name": "Carrier List Offer",
+        "slug": "carrier-list-offer",
+        "message_text_template": "Уважаемый [[candidate_contact]]. Сможете ли вы выйти в резерв для выполнения [[skill]] работы на [[master_company]] в [[target_date_and_time]]? Отправьте YES в ответном сообщении, чтобы согласиться. Мы отправим вам детали работы позже. С уважением, [[recruitment_agent]], [[recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 180,
+        "delivery_timeout": 10,
+        "language": "ru"
+    }
+},{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": null,
+    "fields": {
+        "name": "Carrier List Offer",
+        "slug": "carrier-list-offer",
+        "message_text_template": "Tere [[candidate_contact]]. Kas olete valmis [[master_company]] jaoks alates [[target_date_and_time]]-st olema varutöötaja [[oskus]] ametikohal? Vahetuse kinnitamiseks vastake YES. Saadame teile hiljem töökoha üksikasjad. Lugupidamisega [[recruitment_agent]], [[recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 180,
+        "delivery_timeout": 10,
+        "language": "et"
+    }
+},{
+    "model": "sms_interface.defaultsmstemplate",
+    "pk": null,
+    "fields": {
+        "name": "Carrier List Offer",
+        "slug": "carrier-list-offer",
+        "message_text_template": "Hei [[candidate_contact]]. Oletko valmis tekemään [[skill]] - varmuuskopiotyötä [[master_company]]-lle [[target_date_and_time]]? Vahvista muutos vastaamalla YES, lähetämme sinulle työpaikan tiedot myöhemmin. Terveisin [[recruitment_agent]], [[recruitment_agent__contact__phone_mobile]]",
+        "reply_timeout": 180,
+        "delivery_timeout": 10,
+        "language": "fi"
+    }
+}
+]

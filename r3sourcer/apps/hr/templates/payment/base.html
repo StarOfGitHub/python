@@ -1,0 +1,141 @@
+{% load static %}
+
+<html>
+
+<head>
+    <style type="text/css">
+        body {
+            font-size: 9pt;
+            line-height: 12pt;
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+        }
+        @page {
+            margin: 1cm;
+        }
+        .group:before,
+        .group:after {
+            content: "";
+            display: table;
+        }
+        .group:after {
+            clear: both;
+        }
+        .group {
+            display: block;
+            zoom: 1;
+        }
+        .left {
+            margin-right: 3em;
+            float: left;
+        }
+        .right {
+            float: right;
+        }
+        .document-title {
+            font-size: 1.33em;
+            font-weight: 600;
+        }
+        .text {
+            font-size: 0.83em;
+        }
+        .document-name {
+            font-size: 1.16em;
+            font-weight: 600;
+        }
+        .inner-block {
+            display: inline-block;
+            font-size: 0.83em;
+            line-height: 1.2;
+            width: 45%;
+            padding: .2em;
+            margin-top: 0;
+            vertical-align: top;
+        }
+        .inner-block.lg {
+            width: 100%;
+        }
+        .delim {
+            margin: 16px 0;
+            border: 1px solid rgba(40, 163, 252, .6);
+        }
+        .title {
+            display: inline-block;
+            width: 11em;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 13pt
+            vertical-align: top;
+            opacity: .5;
+        }
+        .title.sm {
+            width: 5em;
+        }
+        .value {
+            display: inline-block;
+            width: 40%;
+            vertical-align: top;
+        }
+        .value.wrap {
+            width: 162px;
+        }
+        .notice {
+            font-size: .9em;
+            font-style: normal;
+            font-weight: bold;
+        }
+        table {
+            border: 0;
+            width: 100%;
+            margin-bottom: 1em;
+            border-collapse: collapse;
+        }
+        .list {
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+        table.list thead {
+            background: rgba(40, 163, 252, .3);
+        }
+        table th {
+            padding: .5em;
+            text-align: left;
+            text-transform: uppercase;
+        }
+        table.list td {
+            padding: .5em;
+            vertical-align: top;
+        }
+        table.list tbody > tr:nth-child(even) {
+            background-color: rgba(40, 163, 252, .1);
+        }
+        table.price {
+            width: 100%;
+            border: 0;
+            border-collapse: collapse;
+        }
+        table.price td {
+            padding-top: 4px;
+            line-height: 18px;
+            vertical-align: top;
+        }
+        table.price td.padding {
+            padding-bottom: 10px;
+        }
+        table.price td.border {
+            border-bottom: 1px solid rgba(40, 163, 252, .3);
+        }
+        table.price td:first-child {
+            width: 85px;
+        }
+        table.price td:last-child {
+            text-align: right;
+        }
+    </style>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    {% block content %}{% endblock %} {% block footer %}{% endblock %}
+</body>
+
+</html>

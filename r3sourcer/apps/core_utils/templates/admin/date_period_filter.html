@@ -1,0 +1,35 @@
+{% load i18n admin_static %}
+<fieldset class="">
+    <h3>
+        {% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}
+    </h3>
+    <link rel="stylesheet" href="{% static 'jquery-ui/themes/base/theme.css' %}"/>
+    <link rel="stylesheet" href="{% static 'jquery-ui/themes/base/datepicker.css' %}"/>
+
+    {% with choices.0 as i %}
+        <p style="text-align: center;">
+            {% for dt in spec.extra_data_fields %}
+                <a style="display: inline-block; padding-left: 10px;" href="?{{ dt.1 }}&{% for k, v in i.get_query.items %}{{ k }}={{ v }}&{% endfor %}">{{ dt.0 }}</a>
+            {% endfor %}
+        </p>
+        <form method="GET" action="" class="actual-periods">
+        {% block filter_form_fields %}
+            {{ spec.form.as_p }}
+            {% for k, v in i.get_query.items %}
+                <input type="hidden" name="{{ k }}" value="{{ v }}">
+            {% endfor %}
+            <input type="submit" value="{% trans "Search" %}">
+        {% endblock %}
+        </form>
+
+        {% if i.selected %}
+            <a href="{{ i.empty_filter }}" class="fa fa-times-circle disable-filter" title="{% trans "Close filter" %}"></a>
+        {% endif %}
+
+        {% block filter_js %}
+        <script type="application/javascript">
+            $('[name={{ spec.form.field_name }}]').datepicker({dateFormat: "dd/mm/yy"});
+        </script>
+        {% endblock %}
+    {% endwith %}
+</fieldset>

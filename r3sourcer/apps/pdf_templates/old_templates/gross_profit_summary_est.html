@@ -1,0 +1,141 @@
+{% load filters %}
+{%  load tz %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brutokasumi ülevaade</title>
+
+  <style>
+    @page {
+      size: A4 landscape;
+      /*margin: 4cm 2.2cm 1.8cm;*/
+      /*margin: 2cm 1.1cm 0.9cm;*/
+      margin: 1cm;
+    }
+
+    body {
+      color: #333;
+      font-size: 16px;
+      line-height: 1.2;
+      padding: 5px;
+    }
+
+    .logo {
+      margin-bottom: 40px;
+    }
+
+    .provided-logo {
+      float: right;
+      font-size: 14px;
+      line-height: 20px;
+      color: rgba(51, 51, 51, .8);
+    }
+
+    .provided-logo img {
+      margin-left: 10px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-weight: 600;
+    }
+
+    table {
+      width: 100%;
+
+      border-collapse: collapse;
+      border: 1px solid #ddd;
+    }
+
+    caption {
+      font-size: 20px;
+      font-weight: 600;
+
+      margin-bottom: 10px;
+    }
+
+    thead th {
+      background-color: #eee;
+    }
+
+    tbody td:first-child {
+      background-color: #eee;
+    }
+
+    th, td {
+      font-size: 15px;
+      padding: 5px 2px;
+      text-align: center;
+      border: 1px solid #cdcdcd;
+    }
+
+    .provided-logo {
+      right: -20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div style="display: inline-block; width: 33%; height: 50px; vertical-align: top;">
+        <img src="{{ master_company_logo }}" alt="Logo" style="height: 50px;">
+      </div>
+      <h4 style="display: inline-block; width: 33%; text-align: center; height: 50px; line-height: 50px">
+      </h4>
+      <div style="display: inline-block; width: 33%; height: 50px; vertical-align: top;">
+        <span class="provided-logo"><span style="height: 50px; line-height: 50px;">Provided by</span> <img class="provided-logo" src="https://piiprent.piipai.com/assets/img/new-software.svg" alt="R3sourcer" style="height: 50px;"></span>
+      </div>
+    </div>
+  </header>
+
+  {% for timesheet in timesheets.all %}
+  <h2 class="title">Gross profit summary</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Kandidaat</th>
+        <th>Positsioon</th>
+        <th>Kuupäev</th>
+        <th>Tegevus</th>
+        <th>Ühiku nimetus</th>
+        <th>Summa</th>
+        <th>Kandidaadi tasu</th>
+        <th>Kliendifirma hinnakirja hind</th>
+        <th>Kandidaati tulu</th>
+        <th>Kliendifirma kulu</th>
+        <th>Põhifirma kasum</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ts_rate in timesheet.timesheet_rates.all %}
+        <tr>
+          <td>
+            {{ timesheet.candidate_contact.contact.first_name }}
+            {{ timesheet.candidate_contact.contact.last_name }}
+          </td>
+          <td>{{ timesheet.job_offer.job.position.name|translation:user }}</td>
+          <td>{{ timesheet.shift_started_at|timezone:timesheet.timezone|date:'d/m/Y' }}</td>
+          <td>{{ ts_rate.worktype|translation:user }}</td>
+          <td>{{ ts_rate.worktype.uom|translation:user }}</td>
+          <td>{{ ts_rate.value }}</td>
+          <td>{{ ts_rate.rate }}</td>
+          <td>{{ ts_rate.client_company_price_list_rate }}</td>
+          <td>{{ ts_rate.earning }}€</td>
+          <td>{{ ts_rate.client_company_expense }}€</td>
+          <td>{{ ts_rate.master_company_profit }}€</td>
+        </tr>
+      {% endfor %}
+      <tr>
+        <td>Kogukasum</td>
+        <td colspan="10" style="text-align: center">{{ timesheet.profit_for_master_company }}€</td>
+      </tr>
+    </tbody>
+  </table>
+
+  {% if not forloop.last %}
+    <p style="page-break-before: always" ></p>
+  {% endif %}
+{% endfor %}
+</body>
+</html>

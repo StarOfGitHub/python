@@ -1,0 +1,25 @@
+
+/* Priority */
+.priority-span {
+    padding: 3px 20px;
+}
+
+.priority-level-bottom {
+    background-color: lightcyan !important;
+}
+
+.priority-level-low {
+    background-color: lightgreen !important;
+}
+
+.priority-level-normal {
+    background-color: lightyellow !important;
+}
+
+.priority-level-high {
+    background-color: lightsalmon !important;
+}
+
+.priority-level-top {
+    background-color: lightcoral !important;
+}

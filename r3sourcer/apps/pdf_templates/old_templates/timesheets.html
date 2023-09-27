@@ -1,0 +1,205 @@
+{% load filters %}
+{%  load tz %}
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Timesheet</title>
+
+	<style>
+		@page {
+            size: A4 landscape;
+            /*margin: 4cm 2.2cm 1.8cm;*/
+            /*margin: 2cm 1.1cm 0.9cm;*/
+            margin: 1cm;
+        }
+		body {
+			color: #333;
+			font-size: 16px;
+			line-height: 1.2;
+
+			padding: 5px;
+		}
+
+		.logo {
+			margin-bottom: 40px;
+		}
+
+		.provided-logo {
+			float: right;
+
+			font-size: 14px;
+			line-height: 20px;
+
+			color: rgba(51, 51, 51, .8);
+		}
+
+		.provided-logo img {
+			margin-left: 10px;
+		}
+
+		h4 {
+			margin-top: 0;
+
+			font-weight: 600;
+		}
+
+		table {
+			width: 100%;
+
+			border-collapse: collapse;
+			border: 1px solid #ddd;
+		}
+
+		caption {
+			font-size: 20px;
+			font-weight: 600;
+
+			margin-bottom: 10px;
+		}
+
+		thead th {
+			background-color: #eee;
+		}
+
+		tbody td:first-child {
+			background-color: #eee;
+		}
+
+		th, td {
+			font-size: 15px;
+			padding: 5px 2px;
+			text-align: center;
+			border: 1px solid #cdcdcd;
+		}
+		.provided-logo {
+			right: -20px;
+		}
+	</style>
+</head>
+<body>
+<header>
+	<div class="logo">
+		<div style="display: inline-block; width: 33%; height: 50px; vertical-align: top;">
+			<img src="{{ master_company_logo }}" alt="Logo" style="height: 50px;">
+		</div>
+		<h4 style="display: inline-block; width: 33%; text-align: center; height: 50px; line-height: 50px">
+			Timesheet
+		</h4>
+		<div style="display: inline-block; width: 33%; height: 50px; vertical-align: top;">
+				<span class="provided-logo"><span style="height: 50px; line-height: 50px;">Provided by</span> <img class="provided-logo" src="https://piiprent.r3sourcer.com/assets/img/new-software.svg" alt="R3sourcer" style="height: 50px;"></span>
+		</div>
+	</div>
+</header>
+{% for group, rates in timesheet_rates %}
+	<h4 class="title">{{ group.0.master_company }}</h4>
+	<table>
+		<caption>{{ group.0 }} {% if group.0.end_date  %} ( expires {{ group.0.end_date|date:'d/m/Y' }} ) {% else %}{% endif %}</caption>
+		{% if group.1 == True %}
+			<thead>
+				<tr>
+					<th>Candidate</th>
+					<th>Position</th>
+					<th>Date</th>
+					<th>Start</th>
+					<th>End</th>
+					<th>Break</th>
+					<th>Base hrs</th>
+					{% if total_15_coef|index:forloop.parentloop.counter0 %}<th>x1.5</th>{% endif %}
+					{% if total_2_coef|index:forloop.parentloop.counter0 %}<th>x2</th>{% endif %}
+					<th>Total</th>
+					{% if total_travel|index:forloop.parentloop.counter0 %}<th>Travel</th>{% endif %}
+					{% if total_meal|index:forloop.parentloop.counter0 %}<th>Meal</th>{% endif %}
+					<th>Electronic timesheet confirmed by supervisor</th>
+					<th>Timesheet confirmed by candidate</th>
+					<th>Electronic signature</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for rate in rates %}
+				<tr>
+					<td>{{ rate.timesheet.candidate_contact }}</td>
+					<td>{{ rate.timesheet.job_offer.job.position.name|translation:user }}</td>
+                    <td>{{ rate.timesheet.shift_started_at|timezone:rate.timesheet.timezone|date:'d/m/Y' }}</td>
+                    <td>{{ rate.timesheet.shift_started_at|timezone:rate.timesheet.timezone|time:'h:i A' }}</td>
+ 					<td>{{ rate.timesheet.shift_ended_at|timezone:rate.timesheet.timezone|time:'h:i A' }}</td>
+					<td>{{ rate.timesheet.break_delta|get_hours }}</td>
+					<td>{{ rate.timesheet.base|get_hours }}</td>
+					{% if total_15_coef|index:forloop.parentloop.counter0 %}<td>{{ rate.timesheet.c_1_5x|get_hours }}</td>{% endif %}
+					{% if total_2_coef|index:forloop.parentloop.counter0 %}<td>{{ rate.timesheet.c_2x|get_hours }}</td>{% endif %}
+					<td>{{ rate.timesheet.base|add:rate.timesheet.c_1_5x|add:rate.timesheet.c_2x|get_hours }}</td>
+					{% if total_travel|index:forloop.parentloop.counter0 %}<td>{{ rate.timesheet.travel }}</td>{% endif %}
+					{% if total_meal|index:forloop.parentloop.counter0 %}<td>{{ rate.timesheet.meal }}</td>{% endif %}
+					<td>{{ rate.timesheet.supervisor }}<br/>{{ rate.timesheet.supervisor.contact.phone_mobile }}<br/>{{rate.timesheet.supervisor_approved_at|timezone:rate.timesheet.timezone|date:'d/m/Y h:i A' }}
+					</td>
+					<td>{{ rate.timesheet.candidate_contact.contact.phone_mobile }}<br/>{{rate.timesheet.candidate_submitted_at|timezone:rate.timesheet.timezone|date:'d/m/Y h:i A' }}
+					</td>
+					<td>
+					{% if rate.timesheet.supervisor_signature %}
+						<img src="{{ rate.timesheet.supervisor_signature.url }}" alt="" style="width: 150px; height: auto; margin:0 auto; vertical-align: middle">
+					{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+				<tr>
+					<td></td><td></td><td></td><td></td><td></td>
+					<td>Total:</td>
+					<td>{{ total_base_units|index:forloop.counter0|get_hours }}</td>
+					{% if total_15_coef|index:forloop.counter0 %}<td>{{ total_15_coef|index:forloop.counter0|get_hours }}</td>{% endif %}
+					{% if total_2_coef|index:forloop.counter0 %}<td>{{ total_2_coef|index:forloop.counter0|get_hours }}</td>{% endif %}
+					<td>{{ total_value|index:forloop.counter0|get_hours }}</td>
+					{% if total_travel|index:forloop.counter0 %}<td>{{ total_travel|index:forloop.counter0|get_hours }}</td>{% endif %}
+					{% if total_meal|index:forloop.counter0 %}<td>{{ total_meal|index:forloop.counter0|get_hours }}</td>{% endif %}
+					<td></td><td></td>
+				</tr>
+			</tbody>
+		{% elif group.1 == False %}
+			<thead>
+				<tr>
+					<th>Candidate</th>
+					<th>Position</th>
+					<th>Date</th>
+					<th>Skill_activity</th>
+					<th>Value</th>
+					<th>Unit of measurement</th>
+					<th>Electronic timesheet confirmed by supervisor</th>
+					<th>Timesheet confirmed by candidate</th>
+					<th>Electronic signature</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for rate in rates %}
+				<tr>
+					<td>{{ rate.timesheet.candidate_contact }}</td>
+					<td>{{ rate.timesheet.job_offer.job.position.name|translation:user }}</td>
+					<td>{{ rate.timesheet.shift_started_at|timezone:rate.timesheet.timezone|date:'d/m/Y' }}</td>
+					<td>{{ rate.worktype|translation:user}}</td>
+					<td>{{ rate.value}}</td>
+					<td>{{ rate.worktype.uom|translation:user}}</td>
+					<td>{{ rate.timesheet.supervisor }}<br/>{{ rate.timesheet.supervisor.contact.phone_mobile }}<br/>{{rate.timesheet.supervisor_approved_at|timezone:rate.timesheet.timezone|date:'d/m/Y h:i A' }}
+					</td>
+					<td>{{ rate.timesheet.candidate_contact.contact.phone_mobile }}<br/>{{rate.timesheet.candidate_submitted_at|timezone:rate.timesheet.timezone|date:'d/m/Y h:i A' }}
+					</td>
+					<td>
+					{% if rate.timesheet.supervisor_signature %}
+						<img src="{{ rate.timesheet.supervisor_signature.url }}" alt="" style="width: 150px; height: auto; margin:0 auto; vertical-align: middle">
+					{% endif %}
+					</td>
+					</tr>
+			{% endfor %}
+			<tr>
+				<td>Total:</td>
+				<td colspan="7">
+					{{total_skill_activities|index:forloop.counter0 }}
+				</td>
+
+			</tr>
+			</tbody>
+		{% endif %}
+	</table>
+	{% if not forloop.last %}
+		<p style="page-break-before: always" ></p>
+	{% endif %}
+{% endfor %}
+</body>
+</html>

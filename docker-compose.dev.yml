@@ -1,0 +1,148 @@
+version: '2'
+services:
+
+##############
+# POSTGRESQL #
+##############
+
+  postgres:
+    restart: always
+    image: "postgres:12"
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+
+#########
+# REDIS #
+#########
+
+  redis:
+    restart: always
+    image: "redis:4-alpine"
+    ports:
+      - "6379:6379"
+
+##############
+# CLISCHOUSE #
+##############
+
+  clickhouse:
+    restart: always
+    image: "yandex/clickhouse-server:18"
+    volumes:
+      - ./users.xml:/etc/clickhouse-server/users.xml
+      - ./clickhouse-entrypoint.sh:/var/lib/clickhouse/clickhouse-entrypoint.sh
+    entrypoint: /var/lib/clickhouse/clickhouse-entrypoint.sh
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+      - "9009:9009"
+
+############
+# RABBITMQ #
+############
+
+  rabbitmq:
+    restart: always
+    image: "rabbitmq:3.7"
+    ports:
+      - 15672:15672
+      - 5672:5672
+
+############
+# FRONTEND #
+############
+
+  nginx:
+    restart: always
+    image: "nginx:1"
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - .env_defaults
+      - .env
+    volumes:
+      - ./var/www/static/:/app/static/
+      - ./var/www/media:/app/media/
+      - ./webui-app/dist/:/app/webui/
+      - ./conf/docker/nginx.conf:/etc/nginx/conf.d/default.conf
+      - /etc/letsencrypt:/etc/letsencrypt
+
+###########
+# BACKEND #
+###########
+
+  web:
+    restart: always
+    container_name: r3sourcer_web
+    build:
+      context: .
+      dockerfile: conf/docker/Dockerfile
+    dns:
+      - 8.8.8.8
+    ports:
+      - "8081:8081"
+    links:
+      - redis
+      - rabbitmq
+      - clickhouse
+      - postgres
+    depends_on:
+      - redis
+      - clickhouse
+      - rabbitmq
+      - postgres
+    environment:
+      - C_FORCE_ROOT=1
+    env_file:
+      - .env_defaults
+      - .env
+    volumes:
+      -  /home/ubuntu/endless_project/var/www/:/app/var/www/
+      - ./keys:/app/keys
+      - ./r3sourcer/:/app/r3sourcer
+    command: "./docker-entrypoint.sh"
+
+# ##########
+# # CELERY #
+# ##########
+
+#   celery:
+#     image: *img
+#     command: celery worker -n worker.celery -E -A r3sourcer -l info --scheduler=redbeat.RedBeatScheduler -Q celery,sms,hr
+#     links:
+#       - redis
+#       - rabbitmq
+#       - clickhouse
+#       - postgres
+#     depends_on:
+#       - redis
+#       - clickhouse
+#       - rabbitmq
+#       - postgres
+#     env_file:
+#       - ./.env_defaults
+#       - ./.env
+
+# ###############
+# # CELERY BEAT #
+# ###############
+
+#   celery-beat:
+#     image: *img
+#     command: celery beat -A r3sourcer -l info --scheduler=redbeat.RedBeatScheduler
+#     links:
+#       - redis
+#       - rabbitmq
+#       - clickhouse
+#       - postgres
+#     depends_on:
+#       - redis
+#       - clickhouse
+#       - rabbitmq
+#       - postgres
+#     env_file:
+#       - ./.env_defaults
+#       - ./.env

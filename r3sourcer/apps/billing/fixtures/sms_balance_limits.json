@@ -1,0 +1,20 @@
+[
+{
+    "model": "billing.smsbalancelimits",
+    "pk": "2",
+    "fields": {
+        "name": "Low",
+        "low_balance_limit": 20,
+        "email_template": 13
+    }
+},
+{
+    "model": "billing.smsbalancelimits",
+    "pk": "3",
+    "fields": {
+        "name": "Ran out",
+        "low_balance_limit": 0,
+        "email_template": 12
+    }
+}
+]

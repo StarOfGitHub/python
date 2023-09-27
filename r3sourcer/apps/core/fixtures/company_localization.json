@@ -1,0 +1,119 @@
+[
+{
+  "model": "core.companylocalization",
+  "pk": "27466aab-1d1e-4597-9f36-c12871f41cfd",
+  "fields": {
+    "field_name": "business_id",
+    "country": "NZ",
+    "verbose_value": "NZBN",
+    "help_text": "New Zealand Business Number",
+    "active": true,
+    "created_at": "2017-03-03T00:00:00.000Z",
+    "updated_at": "2017-03-03T00:00:00.000Z"
+  }
+},
+{
+  "model": "core.companylocalization",
+  "pk": "4ed4cd99-1363-48eb-8438-1e949a09cbb3",
+  "fields": {
+    "field_name": "tax_number",
+    "country": null,
+    "verbose_value": "VAT Number",
+    "help_text": "VAT Number",
+    "active": true,
+    "created_at": "2017-03-03T00:00:00.000Z",
+    "updated_at": "2017-03-03T00:00:00.000Z"
+  }
+},
+{
+  "model": "core.companylocalization",
+  "pk": "4f6a6b40-6fe2-44bd-8daf-abc3103b509e",
+  "fields": {
+    "field_name": "tax_number",
+    "country": "AU",
+    "verbose_value": null,
+    "help_text": null,
+    "active": false,
+    "created_at": "2017-03-03T00:00:00.000Z",
+    "updated_at": "2017-03-03T00:00:00.000Z"
+  }
+},
+{
+  "model": "core.companylocalization",
+  "pk": "556202e0-e521-490f-a96b-30b677951071",
+  "fields": {
+    "field_name": "business_id",
+    "country": null,
+    "verbose_value": "Company Number",
+    "help_text": "Company Number",
+    "active": true,
+    "created_at": "2017-03-03T00:00:00.000Z",
+    "updated_at": "2017-03-03T00:00:00.000Z"
+  }
+},
+{
+  "model": "core.companylocalization",
+  "pk": "bd73092c-7a94-4550-8331-f52722ec97ef",
+  "fields": {
+    "field_name": "tax_number",
+    "country": "NZ",
+    "verbose_value": null,
+    "help_text": null,
+    "active": false,
+    "created_at": "2017-03-03T00:00:00.000Z",
+    "updated_at": "2017-03-03T00:00:00.000Z"
+  }
+},
+{
+  "model": "core.companylocalization",
+  "pk": "e4cd6f8d-9c10-4807-b773-1f2eed11b495",
+  "fields": {
+    "field_name": "business_id",
+    "country": "AU",
+    "verbose_value": "ABN",
+    "help_text": "Australian Business Number",
+    "active": true,
+    "created_at": "2017-03-03T00:00:00.000Z",
+    "updated_at": "2017-03-03T00:00:00.000Z"
+  }
+},
+{
+  "model": "core.companylocalization",
+  "pk": "27baab87-3f58-4cc6-a7fb-fec92aa32c62",
+  "fields": {
+    "field_name": "registered_for_gst",
+    "country": "AU",
+    "verbose_value": "Registered for GST",
+    "help_text": "Registered for GST",
+    "active": true,
+    "created_at": "2017-03-03T00:00:00.000Z",
+    "updated_at": "2017-03-03T00:00:00.000Z"
+  }
+},
+{
+  "model": "core.companylocalization",
+  "pk": "2b07841f-bdea-4d9a-8d04-cf4b7001ba38",
+  "fields": {
+    "field_name": "registered_for_gst",
+    "country": "NZ",
+    "verbose_value": "Registered for GST",
+    "help_text": "Registered for GST",
+    "active": true,
+    "created_at": "2017-03-03T00:00:00.000Z",
+    "updated_at": "2017-03-03T00:00:00.000Z"
+  }
+},
+{
+  "model": "core.companylocalization",
+  "pk": "204ea634-e797-4858-a33c-f440c285335a",
+  "fields": {
+    "field_name": "registered_for_gst",
+    "country": null,
+    "verbose_value": null,
+    "help_text": null,
+    "active": false,
+    "created_at": "2017-03-03T00:00:00.000Z",
+    "updated_at": "2017-03-03T00:00:00.000Z"
+  }
+}
+]

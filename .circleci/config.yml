@@ -1,0 +1,107 @@
+version: 2
+jobs:
+
+  # test:
+  #   docker:
+  #     - image: circleci/python:3.8
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: Setup virtualenv
+  #         command: |
+  #           python3 -m venv venv
+  #           . venv/bin/activate
+  #           pip install --upgrade pip
+  #           pip install --no-cache-dir -r dependencies/pip_py3.txt
+
+
+  build-staging:
+    machine: true
+    steps:
+      - checkout
+      # build the application image
+      - run: docker build -f conf/docker/Dockerfile.prod -t r3sourcer/r3:web-staging .
+      # login to Dockerhub
+      - run: echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+      # deploy the image
+      - run: docker push r3sourcer/$IMAGE_NAME:web-staging
+
+
+  deploy-staging:
+    machine: true
+    steps:
+      # login to Dockerhub
+      - run: echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+      - add_ssh_keys:
+          fingerprints:
+            - "f3:3f:c9:9e:ef:e7:a5:93:58:5f:12:28:31:96:6e:87"
+      - run:
+          name: fix host authenticity for staging server
+          command: ssh-keyscan api.piipaitest.com >> ~/.ssh/known_hosts
+      - run:
+          name: Deploy Staging Over SSH
+          command: |
+            ssh ubuntu@api.piipaitest.com "echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin"
+            ssh ubuntu@api.piipaitest.com "docker-compose -f /home/ubuntu/r3sourcer/docker-compose.yml stop web celery celery-beat"
+            ssh ubuntu@api.piipaitest.com "docker-compose -f /home/ubuntu/r3sourcer/docker-compose.yml rm -f web celery celery-beat"
+            ssh ubuntu@api.piipaitest.com "docker-compose -f /home/ubuntu/r3sourcer/docker-compose.yml pull web"
+            ssh ubuntu@api.piipaitest.com "docker-compose -f /home/ubuntu/r3sourcer/docker-compose.yml up -d"
+
+
+  build-production:
+    machine: true
+    steps:
+      - checkout
+      # login to Dockerhub
+      - run: echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+      # build the application image
+      - run: docker build -f conf/docker/Dockerfile.prod -t r3sourcer/r3:web-production .
+      # deploy the image
+      - run: docker push r3sourcer/$IMAGE_NAME:web-production
+
+
+  deploy-production:
+    machine: true
+    steps:
+      # login to Dockerhub
+      - run: echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+      - add_ssh_keys:
+          fingerprints:
+            - "72:3e:34:b0:ff:45:10:98:97:92:02:27:c8:84:3a:a2"
+      - run:
+          name: fix host authenticity for staging server
+          command: ssh-keyscan api.piipai.com >> ~/.ssh/known_hosts
+      - run:
+          name: Deploy Staging Over SSH
+          command: |
+            ssh ubuntu@api.piipai.com "echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin"
+            ssh ubuntu@api.piipai.com "docker-compose -f /home/ubuntu/r3sourcer/docker-compose.yml stop web celery celery-beat"
+            ssh ubuntu@api.piipai.com "docker-compose -f /home/ubuntu/r3sourcer/docker-compose.yml rm -f web celery celery-beat"
+            ssh ubuntu@api.piipai.com "docker-compose -f /home/ubuntu/r3sourcer/docker-compose.yml pull web"
+            ssh ubuntu@api.piipai.com "docker-compose -f /home/ubuntu/r3sourcer/docker-compose.yml up -d"
+
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build-staging:
+          filters:
+            branches:
+              only: develop
+      - deploy-staging:
+          requires:
+              - build-staging
+          filters:
+            branches:
+              only: develop
+      - build-production:
+          filters:
+            branches:
+              only: master
+      - deploy-production:
+          requires:
+              - build-production
+          filters:
+            branches:
+              only: master

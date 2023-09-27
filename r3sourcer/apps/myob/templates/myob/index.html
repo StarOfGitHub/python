@@ -1,0 +1,12 @@
+{% extends "myob/base.html" %}
+
+{% block content %}
+<h1 class="c-heading c-heading--super">{{ title }}</h1>
+
+<form method="post" action="{{ signin_url }}">
+ {% csrf_token %}
+ {{ form.as_p }}
+ <input class="c-button" type="submit" value="Sign In" />
+</form>
+
+{% endblock %}

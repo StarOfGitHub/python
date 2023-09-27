@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form action="callback/" method="POST">
+          {% csrf_token %}
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_d5AKTy7WjvRJBJ9wZduzAFjI"
+            data-amount="999"
+            data-name="Hello World"
+            data-description="Testing Stripe"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto">
+          </script>
+
+        </form>
+    </body>
+</html>

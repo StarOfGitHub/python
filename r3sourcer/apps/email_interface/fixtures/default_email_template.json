@@ -1,0 +1,268 @@
+[
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 1,
+  "fields": {
+    "name": "Supervisor TimeSheet Sign",
+    "slug": "supervisor-timesheet-sign",
+    "subject_template": "",
+    "message_text_template": "Hi [[supervisor]] please approve hours for your worker(s) . Please approve or change the hours submitted by clinking the link [[get_url]] Please do so urgently so that workers can get paid for hours worked. If you cannot access the link simply reply LOGIN to this email and a new link will be sent to you. Alternatively you can submit your hours on a computer: [[site_url]] -> Customer Access. Thank you!",
+    "message_html_template": "",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 2,
+  "fields": {
+    "name": "Client invoice",
+    "slug": "client-invoice",
+    "subject_template": "Invoice from [[master_company]]",
+    "message_text_template": "Dear Client, please find your invoice and timesheets attached!\r\n\r\nBest Regards,\r\n[[master_company_contact]]\r\n[[master_company]]",
+    "message_html_template": "<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"background-color: #f5f5f5; padding: 10px; font-family: Arial, sans-serif; color: #333; text-align: center; width: 100%\">\r\n\t<tr><td colspan=\"3\" style=\"padding: 0px; margin: 0px; font-size: 20px; height: 20px;\" height=\"20\">&nbsp;</td></tr>\r\n\t<tr>\r\n\t\t<td style=\"padding: 0px;margin: 0px;\">&nbsp;</td>\r\n\t\t<td style=\"padding:0px;margin:0px;width: 540px\" width=\"540\">\r\n\t\t\t<div style=\"box-shadow: 0 0 15px 0 rgba(51, 51, 51, 0.1); margin: 0 auto; background: #fff; padding-bottom: 25px; border-radius: 5px\">\r\n\t\t\t\t<div style=\"text-align: center;\tpadding: 16px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc; border-top-left-radius: 5px; border-top-right-radius: 5px\">\r\n\t\t\t\t\t<img style=\"height: 34px\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div style=\"margin-top: 24px; padding: 0 10px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\r\n\t\t\t\t\t<div style=\"display: inline-block; height: 32px; width: 42px; margin: 0 auto 12px;\tpadding: 24px 19px;\tborder: 2px solid #333; border-radius: 50%;\">\r\n\t\t\t\t\t\t<img src=\"https://r3sourcer.com/assets/img/letter.png\" alt=\"Email\" width=\"32\">\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<br>\r\n\t\t\t\t\t<span>Client invoice</span>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div style=\"width: 60px; padding: 1px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t\t\t\t<div style=\"max-width: 500px; margin: 0 auto; padding: 0 10px; text-align: center\">\r\n\r\n\t\t\t\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t\t\t\t<p>Dear Client, please find your invoice and timesheets attached!</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div style=\"width: 60px; padding: 1px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t\t\t\t<div style=\"margin-top: 16px; padding: 0 10px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\t\t\t\tBest Regards, <br>\r\n\t\t\t\t\t[[master_company_contact]] <br>\r\n\t\t\t\t\t[[master_company]]\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</td>\r\n\t\t<td style=\"padding: 0px;margin: 0px;\">&nbsp;</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td style=\"padding: 0px;margin: 0px;\">&nbsp;</td>\r\n\t\t<td width=\"540\" style=\"font-size: 14px; line-height: 18px; margin: 0; padding: 15px 0; width: 540px\">\r\n\t\t\t<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"100%\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td align=\"left\" valign=\"top\" style=\"width: 50%\">\r\n\t\t\t\t\t\t<span style=\"display: inline-block; min-width: 240px; float: left; color: #4f4f4f; font-size: 12px; line-height: 16px; text-align: left\">\u00a9 2019 Resourcer Software Limited <br> <a href=\"https://r3sourcer.com\">https://r3sourcer.com</a></span>\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"right\" valign=\"top\" style=\"width: 50%\">\r\n\t\t\t\t\t\t<img style=\"margin-bottom: 5px\" src=\"https://r3sourcer.com/assets/img/app_store.png\" alt=\"Apple store\" height=\"36\">\r\n\t\t\t\t\t\t<img style=\"margin-bottom: 5px\" src=\"https://r3sourcer.com/assets/img/app-store-android-download.png\" alt=\"Google Play\" height=\"36\">\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t\t<td style=\"padding: 0px;margin: 0px;\">&nbsp;</td>\r\n\t</tr>\r\n\t<tr><td colspan=\"3\" style=\"padding: 0px; margin: 0px; font-size: 20px; height: 20px;\" height=\"20\">&nbsp;</td></tr>\r\n</table>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 3,
+  "fields": {
+    "name": "Trial E-mail verification success",
+    "slug": "trial-e-mail-verification-success",
+    "subject_template": "Welcome to R3sourcer",
+    "message_text_template": "",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\r\n\t</div>\r\n\r\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\r\n\t\t<span>Trial E-mail verification success</span>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"max-width: 500px; margin: 0 auto\">\r\n\r\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t<p>Hi [[contact__first_name]],</p>\r\n\t\t\t<p>Good news! Your free 30 day trial account is setup for [[master_company]]!</p>\r\n\t\t\t<p>\r\n\t\t\t\tUsername: <b style=\"color: #4f4f4f\">[[contact__email]]</b> <br>\r\n\t\t\t\tPassword: <b style=\"color: #4f4f4f\">[[password]]</b>\r\n\t\t\t</p>\r\n\t\t\t<p>Your portal access is through <a href=\"https://[[subdomain]].r3sourcer.com\">[[subdomain]].r3sourcer.com</a>.</p>\r\n\t\t\t<p>You can start using it now! Our account manager will contact you in 1 business day. He/she will help you to finalize additional setup is needed and will organize online and onsite training for your company!</p>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tBest Regards, <br>\r\n\t\tR3sourcer Administrator\r\n\t</div>\r\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 4,
+  "fields": {
+    "name": "E-mail verification success",
+    "slug": "e-mail-verification-success",
+    "subject_template": "Welcome to R3sourcer",
+    "message_text_template": "Dear [[contact]],\r\n\r\nWelcome to R3sourcer - human resources automation framework!\r\n\r\nYour newly generated password is:\r\n\r\n[[password]]\r\n\r\nUsername: [[username]]\r\n\r\nYou can change this password after logging in!\r\n\r\nTo access our self-service portal please go to:\r\nAddress: [[master_company_url]]\r\n\r\nIf you have any questions about R3sourcer, please let us know. We would be happy to help!\r\n\r\nKind regards,\r\n[[manager]]\r\n[[master_company]]",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\r\n\t</div>\r\n\r\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\r\n\t\t<span>E-mail verification success</span>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"max-width: 500px; margin: 0 auto\">\r\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t<p>Dear [[contact]],</p>\r\n\t\t\tWelcome to R3sourcer - human resources automation framework!\r\n\t\t\t<div style=\"margin: 13px 0 5px\">Your newly generated password is <b style=\"color: #4f4f4f\">[[password]]</b></div>\r\n\t\t\t<div style=\"margin: 5px 0 13px\">Username: <b style=\"color: #4f4f4f\">[[username]]</b></div>\r\n\t\t\tYou can change this password after logging in! <br>\r\n\t\t\t<p>To access our self-service portal please go to: <br>\tAddress: <a href=\"[[master_company_url]]\" style=\"color: #0684e0;\" target=\"_blank\">[[master_company_url]]</a>.</p>\r\n\t\t\tIf you have any questions about R3sourcer, please let us know. We would be happy to help!\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tKind regards, <br>\r\n\t\t[[manager]] <br>\r\n\t\t[[master_company]]\r\n\t</div>\r\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 5,
+  "fields": {
+    "name": "Candidate TimeSheet Hours (old shift)",
+    "slug": "candidate-timesheet-hours-old",
+    "subject_template": "Please fill time sheet",
+    "message_text_template": "Hi [[candidate_contact]] please click on the link [[get_fill_time_sheet_url]] to submit your timesheet for hours worked on [[shift_end_date]]. Once you have submitted your hours, your site foreman today will be asked to approve them. Please make sure you are accurate and honest or your hours will not get approved. If you are unable to open the link, please submit your hours on a computer: [[site_url]] -> Customer Access. Thank you.",
+    "message_html_template": "",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 6,
+  "fields": {
+    "name": "Contact E-mail Verification",
+    "slug": "contact-e-mail-verification",
+    "subject_template": "E-mail Verification",
+    "message_text_template": "Dear [[contact]], \r\nYou've been registered with [[master_company]]!\r\nPlease verify your email by clicking [[email_verification_link]]. \r\nBest regards, [[manager]]",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\r\n\t</div>\r\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\r\n\t\t<div style=\"height: 32px; width: 42px; margin: 0 auto 12px;\tpadding: 24px 19px;\tborder: 2px solid #333; border-radius: 50%;\">\r\n\t\t\t<img src=\"https://r3sourcer.com/assets/img/letter.png\" alt=\"Email\" width=\"32\">\r\n\t\t</div>\r\n\t\t<span>Email verification</span>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"margin-top: 28px; margin-bottom: 4px; font-size: 16px; line-height: 24px; font-weight: bold; text-align: center; color: #4f4f4f;\">Dear [[contact]],</div>\r\n\t<div style=\"font-size: 14px; line-height: 18px;\ttext-align: center; color: #333\">Welcome to R3sourcer. Please verify your email:</div>\r\n\t<a style=\"display: block; width: 120px; margin: 20px auto 0; padding: 14px 68px; font-size: 16px; line-height: 21px; font-weight: bold; text-align: center; color: white; border-radius: 50px; background-color: #28a3fc; text-decoration: none !important;\" href=\"[[email_verification_link]]\" target=\"_blank\">Verify email</a>\r\n\t<div style=\"margin-top: 16px; margin-bottom: 26px; font-size: 12px; line-height: 16px; text-align: center; color: #c2c2c2;\">\r\n\t\t<span style=\"color: #c2c2c2;\">or copy and paste this link into your browser:</span> <br>\r\n\t\t<a href=\"[[email_verification_link]]\" style=\"color: #0684e0;\" target=\"_blank\">[[email_verification_link]]</a>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tBest regards, <br>\r\n\t\t[[manager]]\r\n\t</div>\r\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 7,
+  "fields": {
+    "name": "Candidate TimeSheet Hours",
+    "slug": "candidate-timesheet-hours",
+    "subject_template": "Please fill time sheet",
+    "message_text_template": "Hi [[candidate_contact]] please click on the link [[get_fill_time_sheet_url]] to submit your timesheet for hours worked today. Once you have submitted your hours, your site foreman today will be asked to approve them. Please make sure you are accurate and honest or your hours will not get approved. If you are unable to open the link, please submit your hours on a computer: [[site_url]] -> Customer Access. Thank you.",
+    "message_html_template": "",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 8,
+  "fields": {
+    "name": "Forgot password",
+    "slug": "forgot-password",
+    "subject_template": "Forgot password",
+    "message_text_template": "Dear [[contact]],\r\n\r\nYou have requested a password change! Your newly generated password is:\r\n\r\n[[password]]\r\n\r\nWe recommend you to change this password on your next login.\r\nYou can use the following login details to access it:\r\nAddress: [[site_url]]\r\nUsername: [[email]]\r\n\r\nIf there's anything we can do to help about login related issues or if you have any questions about R3sourcer, please let us know. We are happy to help.\r\n\r\nKind regards, R3sourcer team",
+    "message_html_template": "",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 10,
+  "fields": {
+    "name": "Supervisor TimeSheet Sign Reminder",
+    "slug": "supervisor-timesheet-sign-reminder",
+    "subject_template": "Sign time sheets reminder",
+    "message_text_template": "Hi [[supervisor]] we have not yet received your approval for the hours worked on your jobsite today. Please approve or change the hours submitted by clicking the link [[get_url]] or open on your computer https://r3sourcer.com. Please note failure to do so, will result in workers not getting paid for today, and can affect the price of your next order. If you have any issues please contact [[portfolio_manager]] [[portfolio_manager__contact__phone_mobile]] immediately. Thank you",
+    "message_html_template": "",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 11,
+  "fields": {
+    "name": "Trial User Register",
+    "slug": "trial-user-email-verification",
+    "subject_template": "New user",
+    "message_text_template": "",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\r\n\t</div>\r\n\r\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\r\n\t\t<span>Trial User Email Verification</span>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"max-width: 500px; margin: 0 auto\">\r\n\r\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t<p>Hi [[contact__first_name]],</p>\r\n\t\t\t<p>Thanks for signing up! <br> You\u2019re just one step away from fully activating your new R3sourcer trial account.</p>\r\n\r\n\t\t\t<p>\r\n\t\t\t\tPlease hit the verification button below, enter your details and experience our cloud-based software!\r\n\t\t\t\t<a style=\"display: block; width: 60px; margin: 20px auto; padding: 14px 68px; font-size: 16px; line-height: 21px; font-weight: bold; text-align: center; color: white; border-radius: 50px; background-color: #28a3fc; text-decoration: none !important;\" href=\"[[verification_url]]\" target=\"_blank\">Verify</a>\r\n\t\t\t\tOnce done, we will send you an email with your login details and further instructions.\r\n\t\t\t</p>\r\n\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tBest Regards, <br>\r\n\t\tR3sourcer Administrator\r\n\t</div>\r\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 12,
+  "fields": {
+    "name": "Sms Balance Ran Out",
+    "slug": "sms-balance-ran-out",
+    "subject_template": "Sms balance has ran out",
+    "message_text_template": "Dear [[contact__first_name]], Your sms balance in R3sourcer has ran out, please top-up your balance now to re-activate services. No sms are getting currently sent out and functionality is limited. Best Regards, R3sourcer Team\n",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\n\t</div>\n\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<span>Sms balance has ran out</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"max-width: 500px; margin: 0 auto\">\n\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\n\t\t\t<p>Dear [[contact__first_name]],</p>\n\t\t\t<p>Your sms balance in R3sourcer has ran out, please top-up your balance now to re-activate services. No sms are getting currently sent out and functionality is limited.</p>\n\t\t</div>\n\t</div>\n\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\n\t\tBest Regards, <br>\n\t\tR3sourcer Team\n\t</div>\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 13,
+  "fields": {
+    "name": "Sms Balance Is Low",
+    "slug": "sms-balance-is-low",
+    "subject_template": "Sms balance is low",
+    "message_text_template": "Dear [[contact__first_name]], Your sms balance in R3sourcer has dropped below 20 [[currency]], please top-up your balance now to avoid service suspension. No sms will be sent out if this happens and functionality will be limited. Best Regards, R3sourcer Team\n",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\n\t</div>\n\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<span>Sms balance has ran out</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"max-width: 500px; margin: 0 auto\">\n\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\n\t\t\t<p>Dear [[contact__first_name]],</p>\n\t\t\t<p>Your sms balance in R3sourcer has dropped below $(currency should be country specific)20, please top-up your balance now to avoid service suspension. No sms will be sent out if this happens and functionality will be limited.</p>\n\t\t</div>\n\t</div>\n\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\n\t\tBest Regards, <br>\n\t\tR3sourcer Team\n\t</div>\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 14,
+  "fields": {
+    "name": "Consent email message",
+    "slug": "consent-email-message",
+    "subject_template": "R3sourcer needs your consent",
+    "message_text_template": "Hello!\nEmployment database R3sourcer has your data previously collected. Potential employer has requested acces to your data including your contacts to reach you. If you agree to share this data, please open the link below and click on Approve button!.\n [[candidate_consent_url]]",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\n\t</div>\n\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<span>R3sourcer needs your consent</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"max-width: 500px; margin: 0 auto\">\n\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\n\t\t\t<p>Hello!</p>\n\t\t\t<p>Employment database R3sourcer has your data previously collected. Potential employer has requested acces to your data including your contacts to reach you. If you agree to share this data, please open the link below and click on Approve button!</p>\n\t\t\t<p>[[candidate_consent_url]]</p>\n\t\t</div>\n\t</div>\n\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\n\t\tBest Regards, <br>\n\t\tR3sourcer\n\t</div>\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 15,
+  "fields": {
+    "name": "Consent email message",
+    "slug": "consent-email-message",
+    "subject_template": "R3sourcer needs your consent",
+    "message_text_template": "База данных по трудоустройству R3sourcer содержит ваши данные, собранные ранее. Потенциальный работодатель запросил доступ к вашим данным, включая ваши контакты, чтобы связаться с вами. Если вы согласны поделиться этими данными, перейдите по ссылке ниже и нажмите кнопку «Подтвердить»!\n [[candidate_consent_url]]",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\n\t</div>\n\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<span>R3sourcer needs your consent</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"max-width: 500px; margin: 0 auto\">\n\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\n\t\t\t<p>Hello!</p>\n\t\t\t<p>База данных по трудоустройству R3sourcer содержит ваши данные, собранные ранее. Потенциальный работодатель запросил доступ к вашим данным, включая ваши контакты, чтобы связаться с вами. Если вы согласны поделиться этими данными, перейдите по ссылке ниже и нажмите кнопку «Подтвердить»!</p>\n\t\t\t<p>[[candidate_consent_url]]</p>\n\t\t</div>\n\t</div>\n\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\n\t\tBest Regards, <br>\n\t\tR3sourcer\n\t</div>\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "ru"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 16,
+  "fields": {
+    "name": "Consent email message",
+    "slug": "consent-email-message",
+    "subject_template": "R3sourcer needs your consent",
+    "message_text_template": "Hello!\nR3sourseri tööhõive andmebaas sisaldab teie varem kogutud andmeid. Potentsiaalne tööandja on teiega ühenduse võtmiseks taotlenud juurdepääsu teie andmetele, sealhulgas teie kontaktidele. Kui nõustute neid andmeid jagama, järgige allolevat linki ja klõpsake nuppu \"Kinnita\"!\n [[candidate_consent_url]]",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\n\t</div>\n\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<span>R3sourcer needs your consent</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"max-width: 500px; margin: 0 auto\">\n\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\n\t\t\t<p>Hello!</p>\n\t\t\t<p>R3sourseri tööhõive andmebaas sisaldab teie varem kogutud andmeid. Potentsiaalne tööandja on teiega ühenduse võtmiseks taotlenud juurdepääsu teie andmetele, sealhulgas teie kontaktidele. Kui nõustute neid andmeid jagama, järgige allolevat linki ja klõpsake nuppu \"Kinnita\"!</p>\n\t\t\t<p>[[candidate_consent_url]]</p>\n\t\t</div>\n\t</div>\n\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\n\t\tBest Regards, <br>\n\t\tR3sourcer\n\t</div>\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "et"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 20,
+  "fields": {
+    "name": "Consent email message",
+    "slug": "consent-email-message",
+    "subject_template": "R3sourcer needs your consent",
+    "message_text_template": "Hello!\nR3sourcerin työllisyystietokanta sisältää aiemmin kerätyt tiedot. Mahdollinen työnantaja on pyytänyt pääsyä tietoihisi, mukaan lukien yhteystietosi, ottaakseen sinuun yhteyttä. Jos suostut jakamaan nämä tiedot, seuraa alla olevaa linkkiä ja napsauta \"Vahvista\" -painiketta!\n [[candidate_consent_url]]",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\n\t</div>\n\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<span>R3sourcer needs your consent</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"max-width: 500px; margin: 0 auto\">\n\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\n\t\t\t<p>Hello!</p>\n\t\t\t<p>R3sourcerin työllisyystietokanta sisältää aiemmin kerätyt tiedot. Mahdollinen työnantaja on pyytänyt pääsyä tietoihisi, mukaan lukien yhteystietosi, ottaakseen sinuun yhteyttä. Jos suostut jakamaan nämä tiedot, seuraa alla olevaa linkkiä ja napsauta \"Vahvista\" -painiketta!</p>\n\t\t\t<p>[[candidate_consent_url]]</p>\n\t\t</div>\n\t</div>\n\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\n\t\tBest Regards, <br>\n\t\tR3sourcer\n\t</div>\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "fi"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 17,
+  "fields": {
+    "name": "Login email token",
+    "slug": "login-email-token",
+    "subject_template": "Email login",
+    "message_text_template": "Email login for [[contact]].\nPlease follow this link: [[auth_url]].\nIf the link has expired please request a new one by visiting [[project_url]]",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\n\t</div>\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<div style=\"height: 32px; width: 42px; margin: 0 auto 12px;\tpadding: 24px 19px;\tborder: 2px solid #333; border-radius: 50%;\">\n\t\t\t<img src=\"https://r3sourcer.com/assets/img/letter.png\" alt=\"Email\" width=\"32\">\n\t\t</div>\n\t\t<span>Email login</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"margin-top: 28px; margin-bottom: 4px; font-size: 16px; line-height: 24px; font-weight: bold; text-align: center; color: #4f4f4f;\">Email login for [[contact]].</div>\n\t<div style=\"font-size: 14px; line-height: 18px;\ttext-align: center; color: #333\">Please follow this link: </div>\n\t<a style=\"display: block; width: 120px; margin: 20px auto 0; padding: 14px 68px; font-size: 16px; line-height: 21px; font-weight: bold; text-align: center; color: white; border-radius: 50px; background-color: #28a3fc; text-decoration: none !important;\" href=\"[[auth_url]]\" target=\"_blank\">Login</a>\n\t<div style=\"margin-top: 16px; margin-bottom: 26px; font-size: 12px; line-height: 16px; text-align: center; color: #c2c2c2;\">\n\t\t<span style=\"color: #c2c2c2;\">or copy and paste this link into your browser:</span> <br>\n\t\t<a href=\"[[auth_url]]\" style=\"color: #0684e0;\" target=\"_blank\">[[auth_url]]</a>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\">If the link has expired please request a new one by visiting [[project_url]]</div>\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "et"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 18,
+  "fields": {
+    "name": "Login email token",
+    "slug": "login-email-token",
+    "subject_template": "Email login",
+    "message_text_template": "Email login for [[contact]].\nPlease follow this link: [[auth_url]].\nIf the link has expired please request a new one by visiting [[project_url]]",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\n\t</div>\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<div style=\"height: 32px; width: 42px; margin: 0 auto 12px;\tpadding: 24px 19px;\tborder: 2px solid #333; border-radius: 50%;\">\n\t\t\t<img src=\"https://r3sourcer.com/assets/img/letter.png\" alt=\"Email\" width=\"32\">\n\t\t</div>\n\t\t<span>Email login</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"margin-top: 28px; margin-bottom: 4px; font-size: 16px; line-height: 24px; font-weight: bold; text-align: center; color: #4f4f4f;\">Email login for [[contact]].</div>\n\t<div style=\"font-size: 14px; line-height: 18px;\ttext-align: center; color: #333\">Please follow this link: </div>\n\t<a style=\"display: block; width: 120px; margin: 20px auto 0; padding: 14px 68px; font-size: 16px; line-height: 21px; font-weight: bold; text-align: center; color: white; border-radius: 50px; background-color: #28a3fc; text-decoration: none !important;\" href=\"[[auth_url]]\" target=\"_blank\">Login</a>\n\t<div style=\"margin-top: 16px; margin-bottom: 26px; font-size: 12px; line-height: 16px; text-align: center; color: #c2c2c2;\">\n\t\t<span style=\"color: #c2c2c2;\">or copy and paste this link into your browser:</span> <br>\n\t\t<a href=\"[[auth_url]]\" style=\"color: #0684e0;\" target=\"_blank\">[[auth_url]]</a>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\">If the link has expired please request a new one by visiting [[project_url]]</div>\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "ru"
+  }
+},
+{
+  "model": "email_interface.defaultemailtemplate",
+  "pk": 19,
+  "fields": {
+    "name": "Login email token",
+    "slug": "login-email-token",
+    "subject_template": "Email login",
+    "message_text_template": "Email login for [[contact]].\nPlease follow this link: [[auth_url]].\nIf the link has expired please request a new one by visiting [[project_url]]",
+    "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://r3sourcer.com/assets/img/new-software-white.png\" alt=\"R3sourcer\">\n\t</div>\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<div style=\"height: 32px; width: 42px; margin: 0 auto 12px;\tpadding: 24px 19px;\tborder: 2px solid #333; border-radius: 50%;\">\n\t\t\t<img src=\"https://r3sourcer.com/assets/img/letter.png\" alt=\"Email\" width=\"32\">\n\t\t</div>\n\t\t<span>Email login</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"margin-top: 28px; margin-bottom: 4px; font-size: 16px; line-height: 24px; font-weight: bold; text-align: center; color: #4f4f4f;\">Email login for [[contact]].</div>\n\t<div style=\"font-size: 14px; line-height: 18px;\ttext-align: center; color: #333\">Please follow this link: </div>\n\t<a style=\"display: block; width: 120px; margin: 20px auto 0; padding: 14px 68px; font-size: 16px; line-height: 21px; font-weight: bold; text-align: center; color: white; border-radius: 50px; background-color: #28a3fc; text-decoration: none !important;\" href=\"[[auth_url]]\" target=\"_blank\">Login</a>\n\t<div style=\"margin-top: 16px; margin-bottom: 26px; font-size: 12px; line-height: 16px; text-align: center; color: #c2c2c2;\">\n\t\t<span style=\"color: #c2c2c2;\">or copy and paste this link into your browser:</span> <br>\n\t\t<a href=\"[[auth_url]]\" style=\"color: #0684e0;\" target=\"_blank\">[[auth_url]]</a>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\">If the link has expired please request a new one by visiting [[project_url]]</div>\n</div>",
+    "reply_timeout": 0,
+    "delivery_timeout": 10,
+    "language": "en"
+  }
+}
+]

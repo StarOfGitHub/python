@@ -1,0 +1,270 @@
+<html>
+<head>
+  <style type="text/css">
+     body {
+      font-size: 9pt;
+      line-height: 12pt;
+      font-family: 'Source Sans Pro', Arial, sans-serif;
+    }
+    @page {
+      margin: 1cm;
+    }
+    .group:before,
+    .group:after {
+      content: "";
+      display: table;
+    }
+    .group:after {
+      clear: both;
+    }
+    .group {
+      display: block;
+      zoom: 1;
+    }
+    .left {
+      margin-right: 3em;
+      float: left;
+    }
+    .right {
+      float: right;
+    }
+    .document-title {
+      font-size: 1.33em;
+      font-weight: 600;
+    }
+    .text {
+      font-size: 0.83em;
+    }
+    .document-name {
+      font-size: 1.16em;
+      font-weight: 600;
+    }
+    .inner-block {
+      display: inline-block;
+      font-size: 0.83em;
+      line-height: 1.2;
+      width: 45%;
+      padding: .2em;
+      margin-top: 0;
+      vertical-align: top;
+    }
+    .inner-block.lg {
+      width: 100%;
+    }
+    .delim {
+      margin: 16px 0;
+      border: 1px solid rgba(40, 163, 252, .6);
+    }
+    .title {
+      display: inline-block;
+      width: 11em;
+      font-style: normal;
+      font-weight: bold;
+      line-height: 13pt;
+      vertical-align: top;
+      opacity: .5;
+    }
+    .title.sm {
+      width: 5em;
+    }
+    .value {
+      display: inline-block;
+      width: 40%;
+      vertical-align: top;
+    }
+    .value.wrap {
+      width: 162px;
+    }
+    .notice {
+      font-size: .9em;
+      font-style: normal;
+      font-weight: bold;
+    }
+    table {
+      border: 0;
+      width: 100%;
+      margin-bottom: 1em;
+      border-collapse: collapse;
+    }
+    .list {
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+    table.list thead {
+      background: rgba(40, 163, 252, .3);
+    }
+    table th {
+      padding: .5em;
+      text-align: left;
+      text-transform: uppercase;
+    }
+    table.list td {
+      padding: .5em;
+      vertical-align: top;
+    }
+    table.list tbody > tr:nth-child(even) {
+      background-color: rgba(40, 163, 252, .1);
+    }
+    table.price {
+      width: 100%;
+      border: 0;
+      border-collapse: collapse;
+    }
+    table.price td {
+      padding-top: 4px;
+      line-height: 18px;
+      vertical-align: top;
+    }
+    table.price td.padding {
+      padding-bottom: 10px;
+    }
+    table.price td.border {
+      border-bottom: 1px solid rgba(40, 163, 252, .3);
+    }
+    table.price td:first-child {
+      width: 85px;
+    }
+    table.price td:last-child {
+      text-align: right;
+    }
+  </style>
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+  <h2 class="document-title">{{ master_company.name }}</h2>
+  <div class="group">
+    <div class="left text">
+      <span>{{ master_company.get_hq_address.address.street_address }}
+      {{ master_company.get_hq_address.address.get_city_address }}</span><br>
+      <span>BN {{ master_company.get_formatted_abn }}</span><br>
+      <span>PH {{ master_company.get_hq_address.phone_landline}}</span><br>
+      {% if master_company.get_hq_address.email%}
+      <span> {{ master_company.get_hq_address.email}}</span><br>
+      {% endif %}
+      <span>{{ master_company.website }}</span>
+    </div>
+    <div class="right">
+      <img src="{{ master_company_logo }}" alt="Logo" width="100" style="width: 100px"><br>
+    </div>
+  </div>
+
+  <div class="delim"></div>
+
+  <h3 align="document-name">Tax Invoice</h3>
+
+  <p class="inner-block">
+    <span class="title sm">Bill To:&nbsp;</span>
+    <span>{{ company.name }}</span>
+    <br>
+    <span class="title sm">&nbsp;</span>
+    <span>{{ company.get_hq_address.address.street_address }}</span>
+    <br>
+    <span class="title sm">&nbsp;</span>
+    <span>{{ company.get_hq_address.address.get_city_address }}</span>
+  </p>
+  <p class="inner-block">
+    <span class="title">Invoice number:&nbsp;</span>
+    <span class="value">{{ invoice.number }}</span>
+    <br>
+    <span class="title">Date:&nbsp;</span>
+    <span class="value">{{ invoice.date }}</span>
+    <br>
+    <span class="title">Order date range:&nbsp;</span>
+    <span class="value">{{ invoice.order_number }}</span>
+  </p>
+
+  <table class="list">
+    <thead>
+      <tr>
+        <th>Date</th>
+        {% if show_candidate %}
+          <th>Name</th>
+        {% endif %}
+        <th>Position</th>
+        <th>Skill Activitiy</th>
+        <th>Unit name</th>
+        <th>Rate</th>
+        <th>Units</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for line in lines %}
+      <tr>
+        <td>{{ line.date }}</td>
+        {% if show_candidate %}
+          <td>
+            {{ line.timesheet.job_offer.candidate_contact.contact.first_name }}
+            {{ line.timesheet.job_offer.candidate_contact.contact.last_name }}
+          </td>
+        {% endif %}
+        <td>{{ line.notes }}</td>
+        {% if line.skill_activity%}
+          <td>{{ line.skill_activity }}</td>
+        {% else %}
+          <td>{{ line.activities_list }}</td>
+        {% endif %}
+        <td>{{ line.unit_name }}</td>
+        <td>€{{ line.unit_price }}</td>
+        <td>{{ line.units }}</td>
+        <td>€{{ line.amount }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="group">
+    <div class="left" style="width: 50%; margin-right: 0">
+      <span class="inner-block lg">
+        <span class="title" style="width: 10em">Terms:&nbsp;</span>
+        <span class="value wrap">{{ company.get_terms_of_payment }}</span>
+      </span><br>
+
+      <span class="inner-block lg">
+        <span class="title" style="width: 10em">Customer ABN:&nbsp;</span>
+        <span class="value wrap">{{ company.get_formatted_abn }}</span>
+      </span><br>
+
+      <span class="inner-block lg">
+        <span class="title" style="width: 10em">Comment:&nbsp;</span>
+        <span class="value wrap">All accounts overdue will accrue interest at the rate of 0,13% per day</span>
+      </span>
+    </div>
+    <div class="right" style="width: 40%;">
+      <table class="price" border="0">
+        <tr>
+          <td class="padding">Subtotal:<br>
+            {% with lines|first as first_line %}
+              {% if first_line.vat %}
+                {{ first_line.vat.name }}({{ first_line.vat.rate }})
+              {% else %}
+                Tax:
+              {% endif %}
+            {% endwith %}
+          <td class="padding">€{{ invoice.total }}<br> €{{ invoice.tax }}</td>
+        </tr>
+        <tr>
+          <td class="padding border" style="font-size: 14px; line-height: 14px; font-weight: 600">Total:
+          {% with lines|first as first_line %}
+            {% if first_line.vat %}
+            <br> <span style="font-size: 8px; line-height: 10px; opacity: 0.4">{{ first_line.vat.name }}
+            Included
+            {% endif %}
+          {% endwith %}</span></td>
+          <td class="padding border" style="font-size: 14px; font-weight: 600">€{{ invoice.total_with_tax }}</td>
+        </tr>
+        <tr>
+          <td>Balance due:</td>
+          <td>€{{ invoice.total_with_tax }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="delim"></div>
+
+  <div>{{ master_company.company_settings.invoice_template | safe }}</div>
+
+</body>
+</html>

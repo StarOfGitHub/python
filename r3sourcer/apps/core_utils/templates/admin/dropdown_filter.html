@@ -1,0 +1,23 @@
+{% load i18n %}
+<fieldset class="">
+    <script type="text/javascript">var go_from_select = function (opt) {
+        window.location = window.location.pathname + opt
+    };</script>
+    <h3>{{ title }}</h3>
+    <ul class="admin-filter-{{ title|cut:' ' }}">
+        <li>
+            <select style="width: 95%;"
+                    onchange="go_from_select(this.options[this.selectedIndex].value)" class="dropdown-filter">
+                {% for choice in choices %}
+                    <option{% if choice.selected %} selected="selected"{% endif %}
+                                                    value="{{ choice.query_string|iriencode }}">{{ choice.display }}</option>
+                {% endfor %}
+            </select>
+        </li>
+    </ul>
+    {% with choice=choices.0 %}
+        {% if not choice.selected %}
+            <a href="{{ choice.query_string|iriencode }}" class="fa fa-times-circle disable-filter dropdown" title="{% trans "Close filter" %}"></a>
+        {% endif %}
+    {% endwith %}
+</fieldset>

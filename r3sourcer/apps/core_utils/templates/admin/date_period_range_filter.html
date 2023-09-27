@@ -1,0 +1,42 @@
+{% extends "admin/date_period_filter.html" %}
+{% load i18n admin_static %}
+
+{% block filter_form_fields %}
+    <p class="date-range-filter">
+    {% for field in spec.form.visible_fields %}{{ field }}{% endfor %}
+    </p>
+    {% for k, v in i.get_query.items %}
+        <input type="hidden" name="{{ k }}" value="{{ v }}">
+    {% endfor %}
+    <p class="float-right"><input type="submit" value="{% trans "Search" %}"></p>
+{% endblock %}
+
+{% block filter_js %}
+<script type="application/javascript">
+(function () {
+    var dateFormat = "dd/mm/yy",
+    from = $('[name={{ spec.form.from_field_name }}]')
+        .datepicker({dateFormat: dateFormat})
+        .on("change", function() {
+            to.datepicker("option", "minDate", getDate(this));
+        }),
+    to = $('[name={{ spec.form.to_field_name }}]')
+        .datepicker({dateFormat: dateFormat})
+        .on("change", function() {
+            from.datepicker("option", "maxDate", getDate(this));
+        });
+    from.datepicker("option", "maxDate", getDate(to.get(0)));
+    to.datepicker("option", "minDate", getDate(from.get(0)));
+
+    function getDate(element) {
+        var date;
+        try {
+            date = $.datepicker.parseDate(dateFormat, element.value);
+        } catch (error) {
+            date = null;
+        }
+        return date;
+    }
+})();
+</script>
+{% endblock %}

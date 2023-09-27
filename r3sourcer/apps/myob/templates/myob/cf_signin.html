@@ -1,0 +1,24 @@
+{% extends "myob/base.html" %}
+
+{% block content %}
+<p>
+    Signed in as MYOB user: {{ request.session.myob_user_username }}
+</p>
+
+<p>
+    Chosen Company File: <strong>{{ cf.Name }}</strong>
+</p>
+
+<p>
+    To see all available MYOB Company Files
+    <a class="c-link" href="{{ cf_list_url }}">click here</a>.
+</p>
+
+<h1>{{ title }}</h1>
+
+<form method="post" action="">
+ {% csrf_token %}
+ {{ form.as_p }}
+ <input class="c-button" type="submit" value="Sign In" />
+</form>
+{% endblock content %}

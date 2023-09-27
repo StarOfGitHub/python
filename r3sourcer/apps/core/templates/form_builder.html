@@ -1,0 +1,191 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ form.title }}</title>
+  <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}"/>
+  <link rel="stylesheet" href="{% static 'form-builder/css/main.css' %}"/>
+  <link rel="stylesheet" href="{% static 'jquery-ui/themes/base/jquery-ui.css' %}"/>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Barlow|Lato|Open+Sans|Roboto+Condensed|Roboto:400,400i,600,700" rel="stylesheet">
+  <script type="application/javascript">
+      var storageApiUrl = '{% url 'api:core/forms-list' %}{{ form.id }}/submit/?format=json',
+          companyId = '{{ company_id }}';
+  </script>
+  <style>
+    * {
+      font-family: '{{ company.company_settings.font }}', 'Source Sans Pro', sans-serif;
+    }
+    .color-default {
+     background-color: #28A3FC;
+    }
+    .color-labour {
+      background-color: #f58926;
+    }
+    .color-indigo {
+      background-color: #3f51b5;
+    }
+    .color-teal {
+      background-color: #009688;
+    }
+    .color-brown {
+      background-color: #795548;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse color-{{ company.company_settings.color_scheme }}">
+  {% if company.company_settings.logo %}
+    <img src="{{ company.company_settings.logo.url }}"/>
+  {% else %}
+    <img src="{% static 'form-builder/img/LBK_regular_logo.png' %}" />
+  {% endif %}
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <h1 class="content__title">{{ company }}</h1>
+      <h2 class="content__title">{{ form.title }}</h2>
+
+      {% if form.short_description %}
+        <div class="well">{{ form.short_description }}</div>
+      {% endif %}
+      <div class="content__form-wrap">
+        <form method="post" enctype="multipart/form-data" onsubmit="submitForm(this); return false;">
+          {% csrf_token %}
+          <div class="alert alert-danger all-errors hidden" role="alert">
+            <ul></ul>
+          </div>
+          <div id="form-builder" data-config='{{ form.get_ui_config }}'>
+            <h4 align="center">{% trans 'Loading' %}...</h4>
+          </div>
+          <input type="hidden" value="{{ form.id }}" name="form"/>
+          <input type="submit" class="btn btn-primary" value="{% trans form.save_button_text|default:'Save' %}"
+                 style="display: none"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script defer src="{% static "form-builder/js/vendor.js" %}"></script>
+<script defer src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script defer src="{% static 'jquery-ui/jquery-ui.js' %}"></script>
+<script defer src="{% static "form-builder/js/form-render.min.js" %}"></script>
+<script defer src="{% static "form-builder/js/main.js" %}"></script>
+
+<script>
+  var placeSearch,
+      autocomplete,
+      componentForm = {
+        country: {
+          label: 'short_name',
+          field: 'country',
+          value: '',
+          long_name_value: '',
+          long_name: 'long_name'
+        },
+        administrative_area_level_1: {
+          label: 'long_name',
+          field: 'state',
+          value: '',
+        },
+        locality: {
+          label: 'long_name',
+          field: 'city',
+          value: ''
+        },
+        postal_code: {
+          label: 'short_name',
+          field: 'postal_code',
+          value: '',
+        }
+      };
+
+    var initAutocomplete = function() {
+      // Create the autocomplete object, restricting the search to geographical
+      // location types.
+
+      var interval = setInterval(function() {
+        var field = document.querySelector('[id$=street_address]');
+
+        if (field) {
+          clearInterval(interval);
+
+          autocomplete = new google.maps.places.Autocomplete(
+          /** @type {!HTMLInputElement} */(field),
+            { types: ['geocode'] });
+
+          // When the user selects an address from the dropdown, populate the address
+          // fields in the form.
+          autocomplete.addListener('place_changed', fillInAddress);
+        }
+      }, 1000);
+    }
+
+    function fillInAddress() {
+      // Get the place details from the autocomplete object.
+      var place = autocomplete.getPlace();
+
+      for (var component in componentForm) {
+        document.querySelector(`[id$=${componentForm[component].field}]`).value = '';
+        document.querySelector(`[id$=${componentForm[component].field}]`).disabled = false;
+      }
+
+      // Get each component of the address from the place details
+      // and fill the corresponding field on the form.
+      for (var i = place.address_components.length - 1; i; i--) {
+        var addressType = place.address_components[i].types[0];
+        if (componentForm[addressType]) {
+          var val = place.address_components[i][componentForm[addressType].label];
+          componentForm[addressType].value = val;
+
+          if (componentForm[addressType].field === 'postal_code' || componentForm[addressType].field === 'country') {
+            document.querySelector(`[id$=${componentForm[addressType].field}]`).value = val;
+
+            componentForm[addressType].long_name_value = place.address_components[i][componentForm[addressType].long_name];
+          } else {
+            var field = document.querySelector(`[id$=${componentForm[addressType].field}]`);
+            var options = [].slice.call(field.children);
+            var query,
+              option;
+
+            if (componentForm[addressType].field === 'state') {
+              query = val + ', ' + componentForm.country.long_name_value;
+            } else if (componentForm[addressType].field === 'city') {
+              query = val + ', ' + componentForm.administrative_area_level_1.value + ', ' + componentForm.country.long_name_value;
+            }
+
+            option = options.find((el) => el.innerText.indexOf(query) > -1);
+
+            if (field && option) {
+              field.value = option.value;
+            }
+          }
+        }
+      }
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var geolocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          var circle = new google.maps.Circle({
+            center: geolocation,
+            radius: position.coords.accuracy
+          });
+          autocomplete.setBounds(circle.getBounds());
+        });
+      }
+    }
+</script>
+
+<script defer async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPSqMFiurTOAQ2G-6H6fMIiTdKirVcBk4&libraries=places&callback=initAutocomplete"></script>
+
+</body>
+</html>

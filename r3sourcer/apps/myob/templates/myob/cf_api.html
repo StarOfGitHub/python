@@ -1,0 +1,22 @@
+{% extends "myob/base.html" %}
+
+{% block content %}
+<p>
+    Signed in as MYOB user: {{ request.session.myob_user_username }}
+</p>
+
+<h1>{{ title }}</h1>
+
+<p>
+<pre>
+{{ raw_json }}
+</pre>
+</p>
+
+<ul>
+{% for r in Resources %}
+  <li>{{ r.lstrip }}</li>
+{% endfor %}
+</ul>
+
+{% endblock content %}

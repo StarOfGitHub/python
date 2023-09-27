@@ -1,0 +1,4 @@
+AU	AUS	036	AS	Australia	Canberra	7686850	21515754	OC	.au	AUD	Dollar	61	####	^(\d{4})$	en-AU	2077456		
+NZ	NZL	554	NZ	New Zealand	Wellington	268680	4252277	OC	.nz	NZD	Dollar	64	####	^(\d{4})$	en-NZ,mi	2186224		
+KR	KOR	410	KS	South Korea	Seoul	98480	48422644	AS	.kr	KRW	Won	82	SEOUL ###-###	^(?:SEOUL)*(\d{6})$	ko-KR,en	1835841	KP	
+UA	UKR	804	UP	Ukraine	Kiev	603700	45415596	EU	.ua	UAH	Hryvnia	380	#####	^(\d{5})$	uk,ru-UA,rom,pl,hu	690791	PL,MD,HU,SK,BY,RO,RU	

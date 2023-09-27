@@ -1,0 +1,36 @@
+{% extends "admin/change_select2_list.html" %}
+{% load i18n admin_urls %}
+
+{% block object-tools-items %}
+    {% if has_add_permission %}
+        <li>
+          <a href="javascript:toggleHolidayForm()" class="addlink">
+            {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+          </a>
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block search %}
+    <div id="changelist-add-holidays-form">
+        <form method="post" action="{% url 'admin:publicholiday_fetch_dates' %}">
+            <div>
+                {% csrf_token %}
+                <h1>{% trans "Add Holiday dates" %}</h1>
+                {{ holiday_form.as_p }}
+                <input type="submit" value="{% trans "Fetch dates" %}">
+                {% url cl.opts|admin_urlname:'add' as add_url %}
+                <a href="{% add_preserved_filters add_url is_popup to_field %}" class="addlink">
+                    {% trans "Add custom Public Holiday" %}
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <script type="application/javascript">
+        function toggleHolidayForm() {
+            django.jQuery("#changelist-add-holidays-form").toggle();
+        }
+    </script>
+    {{ block.super }}
+{% endblock %}

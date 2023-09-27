@@ -1,0 +1,26 @@
+{% extends "myob/base.html" %}
+
+{% block content %}
+<p>Signed in as MYOB user: {{ request.session.myob_user_username }}</p>
+
+<h1>{{ title }}</h1>
+
+<p>Chose a file to work with:</p>
+
+<ul class="c-list">
+
+  {% for cf in cf_list %}
+  <li class="c-list__item">
+      <p>
+      <a class="c-button c-button--ghost-secondary c-button--large"
+         href="{{ cf.signin_url }}">
+        {{ cf.Name }}
+      </a>
+      </p>
+      <br/>
+  </li>
+  {% endfor %}
+
+</ul>
+
+{% endblock %}

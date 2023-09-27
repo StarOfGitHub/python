@@ -1,0 +1,51 @@
+.icon-logo:before {
+    content: "";
+    background-image: url('../img/Endless_Pro_Logo_27_01_2016_Full-Color-Positive-Transparent.png');
+    width: 100px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 2px;
+}
+
+/* fix for datetime control top offset */
+.tabular table tbody td a:not(.related-widget-wrapper-link):not(.add-another):before {
+    line-height: 0 !important;
+}
+/* fix for datetime control padding */
+.inline-group .calendar-shortcuts, .inline-group span.datetimeshortcuts {
+    font-size: 12px!important;
+}
+
+#changelist-add-holidays-form {
+    margin: 10px 0;
+    display: none;
+    background-color: #fff;
+    width: calc(100% - 245px);
+}
+
+#changelist-add-holidays-form > form >div > p:first-child {
+    margin-right: 30px !important;
+}
+
+#changelist-add-holidays-form > form > div {
+    border: 1px solid silver;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#changelist-add-holidays-form > form > div > p {
+    display: inline-block;
+}
+
+.polymorphic-type-menu {
+    z-index: 5;
+}
+
+.js-inline-polymorphic-admin-formset.inline-group {
+    overflow: visible;
+}
+
+.js-inline-polymorphic-admin-formset.inline-group .module {
+    overflow: visible;
+}

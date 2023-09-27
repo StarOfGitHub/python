@@ -1,0 +1,35 @@
+[
+{
+    "model": "core.unitofmeasurement",
+    "pk": "61f234ae-5b2b-4f2f-94da-8392cf9f10fe",
+    "fields": {
+        "updated_at": "2021-01-09T11:04:24.311Z",
+        "created_at": "2021-01-06T17:00:28.308Z",
+        "name": "hours",
+        "short_name": "h",
+        "default": true
+    }
+},
+{
+    "model": "core.unitofmeasurement",
+    "pk": "7fddac22-a60e-4473-b0d8-522ba5b33f8a",
+    "fields": {
+        "updated_at": "2021-01-09T11:00:50.503Z",
+        "created_at": "2021-01-09T11:00:50.503Z",
+        "name": "square meters",
+        "short_name": "m2",
+        "default": false
+    }
+},
+{
+    "model": "core.unitofmeasurement",
+    "pk": "d2e2ce45-fa52-41aa-890e-016c66bd80ed",
+    "fields": {
+        "updated_at": "2021-01-09T11:07:17.235Z",
+        "created_at": "2021-01-09T11:07:17.235Z",
+        "name": "cubic meters",
+        "short_name": "m3",
+        "default": false
+    }
+}
+]

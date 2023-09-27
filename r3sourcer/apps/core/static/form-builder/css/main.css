@@ -1,0 +1,32 @@
+.navbar > img {
+    height: 60px;
+}
+
+.navbar {
+    padding: 10px 0 10px 20px;
+    background: #f58920;
+    border: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.navbar > h3 {
+    color: white;
+}
+
+.btn-primary {
+    background-color: #f58920;
+    border-color: #e27820;
+}
+
+.btn-primary:hover {
+    background-color: #e27820;
+    border-color: #e27820;
+}
+
+.btn-primary:active, .btn-primary:focus,
+.btn-primary:active:focus {
+    background-color: #d16c20;
+    border-color: #e27820;
+}

@@ -1,0 +1,87 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls %}
+
+{% block object-tools-items %}
+    {% if original %}
+        {% if original.periodic_task %}
+            <li class="active"><a href="{% url opts|admin_urlname:'change_enabled' original.id 0 %}">{% trans "Deactivate" %}</a></li>
+        {% else %}
+            <li class="active"><a href="{% url opts|admin_urlname:'change_enabled' original.id 1 %}">{% trans "Activate" %}</a></li>
+        {% endif %}
+    {% endif %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <script type="application/javascript">
+        (function($) {
+            var toggleTimePanel = function (state) {
+                $(".form-row.field-base_type").toggle(['INTERVAL', 'SCHEDULE'].indexOf(state) != -1)
+                $("form .module.aligned").eq(1).toggle(['INTERVAL'].indexOf(state) != -1)
+                $("form .module.aligned").eq(2).toggle(['SCHEDULE'].indexOf(state) != -1)
+            };
+            $(document).ready(function () {
+                var rules = {
+                        monthly: {
+                            FIXED: [],
+                            INTERVAL: ['every', 'started_at'],
+                            SCHEDULE: ['day_of_month', 'day_of_week', 'hour', 'minute', 'started_at']
+                        },
+                        weekly: {
+                            FIXED: [],
+                            INTERVAL: ['every', 'started_at'],
+                            SCHEDULE: ['day_of_week', 'hour', 'minute', 'started_at']
+                        },
+                        daily: {
+                            FIXED: [],
+                            INTERVAL: ['every', 'started_at'],
+                            SCHEDULE: ['hour', 'minute', 'started_at']
+                        },
+                        hourly: {
+                            FIXED: [],
+                            INTERVAL: ['every', 'started_at'],
+                            SCHEDULE: ['minute', 'started_at']
+                        },
+                        minutely: {
+                            FIXED: [],
+                            INTERVAL: ['every', 'started_at'],
+                            SCHEDULE: ['minute', 'started_at']
+                        },
+                        secondly: {
+                            FIXED: [],
+                            INTERVAL: ['every', 'started_at'],
+                            SCHEDULE: ['started_at']
+                        }
+                    },
+                    fullFields = {
+                        INTERVAL: ['every'],
+                        SCHEDULE: ['month_of_year', 'day_of_month', 'day_of_week', 'hour', 'minute'],
+                        FIXED: ['started_at']
+                    };
+
+                var processFields = function (fields, hiddenFields) {
+                    fields.forEach(function (elem) {
+                        $(".field-" + elem).show();
+                    });
+                    hiddenFields.forEach(function (elem) {
+                        if (fields.indexOf(elem) == -1)
+                            $(".field-" + elem).hide();
+                    });
+                };
+
+                $("#id_repeat_type").on("change", function (e) {
+                    toggleTimePanel(this.value);
+                    processFields(rules[$("#id_base_type").val()][this.value], fullFields[this.value]);
+                }).change();
+
+                $("#id_base_type").on("change", function () {
+                    var repeatType = $("#id_repeat_type").val();
+                    processFields(rules[this.value][repeatType], fullFields[repeatType]);
+                });
+                var repeatType = $("#id_repeat_type").val()
+                processFields(rules[$("#id_base_type").val()][repeatType], fullFields[repeatType]);
+            });
+        }(django.jQuery));
+    </script>
+{% endblock %}

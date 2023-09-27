@@ -1,0 +1,482 @@
+[
+    {
+        "model": "core.workflow",
+        "fields": {
+            "model": "core.companyrel",
+            "name": "Company Relations Workflow"
+        },
+        "pk": "715144b0-2ff8-40eb-9010-f7909ca2006e"
+    },
+    {
+        "model": "core.workflow",
+        "fields": {
+            "model": "core.order",
+            "name": "Order Workflow"
+        },
+        "pk": "93c26581-6dda-440a-87ce-d7ca7904a0b6"
+    },
+    {
+        "model": "core.workflow",
+        "fields": {
+            "model": "core.company",
+            "name": "Master Company Workflow"
+        },
+        "pk": "5f4d5dbc-1b32-4ab5-892e-1f0e9c88b61b"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": true,
+            "workflow": "715144b0-2ff8-40eb-9010-f7909ca2006e",
+            "name_after_activation": "Sales Failed",
+            "name_before_activation": "Cancel/Fail",
+            "number": 0,
+            "rules": {
+                "active": [
+                    0
+                ],
+                "required_states": [
+                    "or",
+                    10,
+                    [
+                        "or",
+                        20,
+                        [
+                            "or",
+                            30,
+                            40
+                        ]
+                    ]
+                ]
+            }
+        },
+        "pk": "ce593e79-aa7b-4479-a1fe-ab45b238f036"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": false,
+            "workflow": "715144b0-2ff8-40eb-9010-f7909ca2006e",
+            "name_after_activation": "Active",
+            "name_before_activation": "Activate",
+            "number": 70,
+            "rules": {
+                "active": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    60,
+                    70
+                ],
+                "required_states": [
+                    "and",
+                    60
+                ]
+            }
+        },
+        "pk": "6e2ae964-775e-46a7-bcf1-a2b49d622721"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": true,
+            "workflow": "93c26581-6dda-440a-87ce-d7ca7904a0b6",
+            "name_after_activation": "Confirmed",
+            "name_before_activation": "Confirm",
+            "number": 50,
+            "rules": {
+                "active": [
+                    50
+                ],
+                "required_functions": [
+                    "and",
+                    "is_state_50_available"
+                ],
+                "required_states": [
+                    "or",
+                    10,
+                    80
+                ]
+            }
+        },
+        "pk": "2baef0f3-76c0-4b4b-ac41-a0709a4f0dd0"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": false,
+            "workflow": "715144b0-2ff8-40eb-9010-f7909ca2006e",
+            "name_after_activation": "Proposal Presented",
+            "name_before_activation": "Preparing Proposal",
+            "number": 40,
+            "rules": {
+                "active": [
+                    10,
+                    20,
+                    30,
+                    40
+                ],
+                "required_states": [
+                    "and",
+                    30
+                ]
+            }
+        },
+        "pk": "2fd521a6-357d-48ce-b981-d7e0c5ed3ca8"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": true,
+            "workflow": "93c26581-6dda-440a-87ce-d7ca7904a0b6",
+            "name_after_activation": "Completed",
+            "name_before_activation": "Complete",
+            "number": 90,
+            "rules": {
+                "active": [
+                    90
+                ],
+                "required_functions": [
+                    "and",
+                    "is_state_90_available"
+                ],
+                "required_states": [
+                    "and",
+                    50
+                ]
+            }
+        },
+        "pk": "49673039-9c88-4563-8bb8-221aa4beccaa"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": true,
+            "workflow": "93c26581-6dda-440a-87ce-d7ca7904a0b6",
+            "name_after_activation": "Cancelled",
+            "name_before_activation": "Cancel",
+            "number": 0,
+            "rules": {
+                "active": [
+                    0
+                ],
+                "required_states": [
+                    "or",
+                    10,
+                    50
+                ]
+            }
+        },
+        "pk": "a2ea3a15-e5c0-4198-a8ee-de15f925bc0d"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": false,
+            "workflow": "93c26581-6dda-440a-87ce-d7ca7904a0b6",
+            "name_after_activation": "",
+            "name_before_activation": "On hold",
+            "number": 80,
+            "rules": {
+                "active": [
+                    80
+                ],
+                "required_states": [
+                    "and",
+                    50
+                ]
+            }
+        },
+        "pk": "d2953018-f225-42b6-9e3d-f1439a77f5fe"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": false,
+            "workflow": "715144b0-2ff8-40eb-9010-f7909ca2006e",
+            "name_after_activation": "Contract Signed",
+            "name_before_activation": "Signing Contract",
+            "number": 60,
+            "rules": {
+                "active": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    60
+                ],
+                "required_functions": [
+                    "and",
+                    "is_state_60_available"
+                ],
+                "required_states": [
+                    "and",
+                    40
+                ]
+            }
+        },
+        "pk": "9748164c-2804-40f7-986d-9cd0127120ee"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": true,
+            "workflow": "93c26581-6dda-440a-87ce-d7ca7904a0b6",
+            "name_after_activation": "",
+            "name_before_activation": "New",
+            "number": 10,
+            "initial": true,
+            "rules": {
+                "active": [
+                    10
+                ]
+            }
+        },
+        "pk": "ea2e5395-d7b8-48d3-a655-f5754e9b803e"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": true,
+            "workflow": "715144b0-2ff8-40eb-9010-f7909ca2006e",
+            "name_after_activation": "",
+            "name_before_activation": "Generate Proposal",
+            "number": 30,
+            "rules": {
+                "active": [
+                    10,
+                    20,
+                    30
+                ],
+                "required_states": [
+                    "and",
+                    20
+                ]
+            }
+        },
+        "pk": "16da69d5-dfe5-410b-a7cb-51e2a6d1945a"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": false,
+            "workflow": "715144b0-2ff8-40eb-9010-f7909ca2006e",
+            "name_after_activation": "Banned",
+            "name_before_activation": "Ban",
+            "number": 90,
+            "rules": {
+                "active": [
+                    10,
+                    20,
+                    90
+                ],
+                "required_states": [
+                    "or",
+                    60,
+                    70
+                ]
+            }
+        },
+        "pk": "812fce57-01a6-4af0-8fbb-301c2dc218d0"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": false,
+            "workflow": "715144b0-2ff8-40eb-9010-f7909ca2006e",
+            "name_after_activation": "On Hold/Suspended",
+            "name_before_activation": "Suspend",
+            "number": 80,
+            "rules": {
+                "active": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    60,
+                    80
+                ],
+                "required_states": [
+                    "or",
+                    10,
+                    [
+                        "or",
+                        20,
+                        [
+                            "or",
+                            30,
+                            [
+                                "or",
+                                40,
+                                [
+                                    "or",
+                                    60,
+                                    70
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            }
+        },
+        "pk": "7530eaa2-543c-4e7b-b85d-7746abe558d1"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": true,
+            "workflow": "715144b0-2ff8-40eb-9010-f7909ca2006e",
+            "name_after_activation": "Found Lead",
+            "name_before_activation": "New Lead",
+            "number": 10,
+            "initial": true,
+            "rules": {
+                "active": [
+                    10
+                ],
+                "required_states": [
+                    "or",
+                    0,
+                    null
+                ]
+            }
+        },
+        "pk": "3c8d4469-acb4-4337-896e-c88a4b1951ff"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": true,
+            "workflow": "715144b0-2ff8-40eb-9010-f7909ca2006e",
+            "name_after_activation": "",
+            "name_before_activation": "Lead qualified",
+            "number": 20,
+            "rules": {
+                "active": [
+                    10,
+                    20
+                ],
+                "required_functions": [
+                    "and",
+                    "is_manager_identified",
+                    "is_address_valid",
+                    "is_description_set",
+                    "is_primary_contact_assigned",
+                    "is_industry_set"
+                ],
+                "required_states": [
+                    "and",
+                    10
+                ]
+            }
+        },
+        "pk": "cb2b481d-2554-46bd-9592-03032b192fb9"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": true,
+            "workflow": "5f4d5dbc-1b32-4ab5-892e-1f0e9c88b61b",
+            "name_after_activation": "",
+            "name_before_activation": "Trial",
+            "number": 10,
+            "rules": {
+                "active": [
+                    10,
+                    20
+                ]
+            }
+        },
+        "pk": "fe870898-af51-45d1-b6aa-9e1c1f9c492e"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": true,
+            "workflow": "5f4d5dbc-1b32-4ab5-892e-1f0e9c88b61b",
+            "name_after_activation": "Set up MYOB",
+            "name_before_activation": "MYOB configured",
+            "number": 20,
+            "rules": {
+                "active": [
+                    10,
+                    20
+                ],
+                "required_states": [
+                    "and",
+                    10
+                ]
+            }
+        },
+        "pk": "da44d519-7aad-46c2-97bc-e845a48d00ac"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": true,
+            "workflow": "5f4d5dbc-1b32-4ab5-892e-1f0e9c88b61b",
+            "name_after_activation": "Set up Twilio",
+            "name_before_activation": "Twilio configured",
+            "number": 30,
+            "rules": {
+                "active": [
+                    10,
+                    20,
+                    30
+                ],
+                "required_states": [
+                    "and",
+                    10
+                ]
+            }
+        },
+        "pk": "b25bf5ec-446d-4c2d-86fd-d97a458b88f4"
+    },
+    {
+        "model": "core.workflownode",
+        "fields": {
+            "active": true,
+            "hardlock": true,
+            "workflow": "5f4d5dbc-1b32-4ab5-892e-1f0e9c88b61b",
+            "name_after_activation": "",
+            "name_before_activation": "Active",
+            "number": 40,
+            "rules": {
+                "active": [
+                    10,
+                    20,
+                    30,
+                    40
+                ],
+                "required_states": [
+                    "and",
+                    10,
+                    [
+                        "and",
+                        20,
+                        30
+                    ]
+                ]
+            }
+        },
+        "pk": "aee9d4b2-9e3f-4bd9-a0af-37e80ec861f8"
+    }
+]

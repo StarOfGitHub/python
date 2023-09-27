@@ -1,0 +1,10 @@
+/venv/*
+/var/*
+/webui-app/*
+/DB_structure/*
+/.circleci/*
+docker-compose.*
+.git
+.gitignore
+pytest.ini
+.coveragerc

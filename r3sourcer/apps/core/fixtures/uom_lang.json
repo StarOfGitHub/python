@@ -1,0 +1,152 @@
+[
+{
+    "model": "core.uomlanguage",
+    "pk": 1,
+    "fields": {
+        "uom": "61f234ae-5b2b-4f2f-94da-8392cf9f10fe",
+        "language": "en",
+        "name": "hours",
+        "short_name": "h"
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 2,
+    "fields": {
+        "uom": "61f234ae-5b2b-4f2f-94da-8392cf9f10fe",
+        "language": "et",
+        "name": "tundi",
+        "short_name": "t"
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 3,
+    "fields": {
+        "uom": "7fddac22-a60e-4473-b0d8-522ba5b33f8a",
+        "language": "en",
+        "name": "\u043a\u0432\u0430\u0434\u0440\u0430\u0442\u043d\u0456 \u043c\u0435\u0442\u0440\u0438",
+        "short_name": "m2"
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 4,
+    "fields": {
+        "uom": "7fddac22-a60e-4473-b0d8-522ba5b33f8a",
+        "language": "et",
+        "name": "ruutmeetrit",
+        "short_name": "m2"
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 5,
+    "fields": {
+        "uom": "7fddac22-a60e-4473-b0d8-522ba5b33f8a",
+        "language": "fi",
+        "name": "neli\u00f6metri\u00e4",
+        "short_name": "m2"
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 6,
+    "fields": {
+        "uom": "7fddac22-a60e-4473-b0d8-522ba5b33f8a",
+        "language": "uk",
+        "name": "\u043a\u0432\u0430\u0434\u0440\u0430\u0442\u043d\u0456 \u043c\u0435\u0442\u0440\u0438",
+        "short_name": "\u043c2"
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 7,
+    "fields": {
+        "uom": "7fddac22-a60e-4473-b0d8-522ba5b33f8a",
+        "language": "ru",
+        "name": "\u043a\u0432\u0430\u0434\u0440\u0430\u0442\u043d\u044b\u0435 \u043c\u0435\u0442\u0440\u0438",
+        "short_name": "\u043c2"
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 8,
+    "fields": {
+        "uom": "61f234ae-5b2b-4f2f-94da-8392cf9f10fe",
+        "language": "fi",
+        "name": "tuntia",
+        "short_name": "t"
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 9,
+    "fields": {
+        "uom": "61f234ae-5b2b-4f2f-94da-8392cf9f10fe",
+        "language": "uk",
+        "name": "\u0433\u043e\u0434\u0438\u043d\u0438",
+        "short_name": "\u0433\u043e\u0434."
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 10,
+    "fields": {
+        "uom": "61f234ae-5b2b-4f2f-94da-8392cf9f10fe",
+        "language": "ru",
+        "name": "\u0447\u0430\u0441\u044b",
+        "short_name": "\u0447\u0430\u0441."
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 11,
+    "fields": {
+        "uom": "d2e2ce45-fa52-41aa-890e-016c66bd80ed",
+        "language": "en",
+        "name": "cubic meters",
+        "short_name": "m3"
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 12,
+    "fields": {
+        "uom": "d2e2ce45-fa52-41aa-890e-016c66bd80ed",
+        "language": "et",
+        "name": "kuupmeetrit",
+        "short_name": "m3"
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 13,
+    "fields": {
+        "uom": "d2e2ce45-fa52-41aa-890e-016c66bd80ed",
+        "language": "fi",
+        "name": "kuutiometri\u00e4",
+        "short_name": "m3"
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 14,
+    "fields": {
+        "uom": "d2e2ce45-fa52-41aa-890e-016c66bd80ed",
+        "language": "uk",
+        "name": "\u043a\u0443\u0431\u0456\u0447\u043d\u0456 \u043c\u0435\u0442\u0440\u0438",
+        "short_name": "\u043c3"
+    }
+},
+{
+    "model": "core.uomlanguage",
+    "pk": 15,
+    "fields": {
+        "uom": "d2e2ce45-fa52-41aa-890e-016c66bd80ed",
+        "language": "ru",
+        "name": "\u043a\u0443\u0431\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043c\u0435\u0442\u0440\u044b",
+        "short_name": "\u043c3"
+    }
+}
+]

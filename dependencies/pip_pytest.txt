@@ -1,0 +1,14 @@
+-r pip_py3.txt
+
+-e .
+
+pytest==3.6.3
+pytest-django==3.3.2
+pytest-cov==2.5.1
+pytest-env==0.6.2
+mock==2.0.0
+django_mock_queries==2.0.1
+freezegun==0.3.10
+pytest-faker==2.0.0
+requests-mock==1.5.0
+ipython

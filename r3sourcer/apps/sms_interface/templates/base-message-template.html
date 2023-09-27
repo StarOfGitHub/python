@@ -1,0 +1,754 @@
+{% load i18n %}
+{% load static %}
+<html>
+<head>
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+    {% include "admin/select2_mixin.html" %}
+    <link href="{% static 'jquery-ui/themes/base/theme.css' %}" type="text/css" media="screen" rel="stylesheet"/>
+    <link href="{% static 'jquery-ui/themes/base/datepicker.css' %}" rel="stylesheet"/>
+{#    <link href="{% static 'jt.timepicker/jquery.timepicker.css' %}" rel="stylesheet"/>#}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css">
+
+    <script src="{% static 'jquery-ui/ui/widgets/datepicker.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.3/jquery.tinymce.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.3/tinymce.min.js"></script>
+
+{#    <script src="{% static 'jt.timepicker/jquery.timepicker.min.js' %}" type="application/javascript"></script>#}
+{#    <script type="text/javascript" src="{% static 'tinymce/jquery.tinymce.js' %}"></script>#}
+{#    <script type="text/javascript" src="{% static 'tinymce/tinymce.js' %}"></script>#}
+    <!-- scripts -->
+    {% block scripts %}{% endblock %}
+    <script type="application/javascript">
+        // using jQuery
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var token = '';
+
+        location.search.split('&').forEach((params) => {
+            var param = params.split('=');
+            if (param[0] === 'token') {
+                token = param[1];
+            }
+        });
+    </script>
+    <script type="application/javascript">
+        var messageType = "{{ message_type }}",
+            splitter = {email: '<br/>', sms: '\n'},
+            appModels = [], appModelsTmp = [], id_select2;
+
+        function showPreview(obj) {
+            var url = (messageType == 'email') ? '/context.io/admin-api/templates/compile/?format=json&' : '{% url 'sms_interface:template-compile' %}?';
+            var sendingData = {},
+                getData = {{ template_params|safe }},
+                formElement = $("form")[0];
+            $(obj).toggleClass('preview');
+
+            if ($(obj).hasClass('preview'))
+            // get all form fields
+                for (var i = 0; i < formElement.elements.length; i++)
+                    if (formElement.elements[i].id.indexOf('id_') == 0 && formElement.elements[i].name) {
+                        sendingData[formElement.elements[i].name] = $(formElement.elements[i]).val();
+                        if (!formElement.elements[i].value && formElement.elements[i].name != 'params') {
+                            if (formElement.elements[i].name == 'body' && messageType == 'email')
+                                if ((sendingData[formElement.elements[i].name] = tinyMCE.activeEditor.getContent()) != "")
+                                    continue;
+                            $('.error-message').css('display', 'block');
+                            setTimeout(() => {
+                                $('.error-message').css('display', 'none');
+                            }, 4000);
+                            $(obj).toggleClass('preview');
+                            throw new Error("Enter all fields");
+                        }
+                    }
+
+            if (messageType === 'email')
+                $("#id_body_parent").toggle();
+            else
+                $("#id_body").toggle();
+
+            $(".preview-block").toggle();
+            $(".required-fields").toggle();
+
+            if ($(obj).hasClass('preview')) {
+                // get data from tinymce editor for email message
+                if (messageType == 'email')
+                    sendingData.body = tinyMCE.activeEditor.getContent();
+                sendingData.params = JSON.stringify(getExtraParams());
+                var recipient = $("#id_recipient").val();
+                $(obj).val("Close preview");
+                $(obj).parent().append("<span class='extra-loading-span'>Loading..</span>");
+                $.ajax({
+                    type: 'post',
+                    headers: {
+                        "Context-Type": "application/json",
+                        "Authorization": "JWT " + token
+                    },
+                    url: url + $.param($.extend(getData, {recipient: recipient})),
+                    data: sendingData,
+                    success: function (response) {
+                        var message = "", d = splitter[messageType];
+
+                        switch (messageType) {
+                            case 'email':
+                                for (var i = 0; i < response.subject.length; i++){
+                                    message += (i + 1).toString() + '.' + d + 'Subject: ' + response.subject[i] + d + 'Body:' + response.body[i] + d + '----' + d + d;
+                                }
+                                $('#id_preview').html(message);
+                                break;
+                            case 'sms':
+                                for (var i = 0; i < response.body.length; i++)
+                                    message += (i + 1).toString() + '.' + d + response.body[i] + d + d;
+                                $('#id_preview')[0].innerText = message;
+                                break
+                        }
+
+
+                        $(obj).parent().find(".extra-loading-span").remove();
+                    },
+                    error: function (err) {
+                        $(obj).parent().find(".extra-loading-span").remove();
+                        alert("Server error");
+                    }
+                });
+
+            }
+            else {
+                $(obj).val("Preview");
+            }
+        }
+
+        function getExtraParams() {
+
+            var extendedParams = {};
+
+            $(".wrapper-item-param").each(function (index, elem) {
+                var paramName = $(elem).data('name'),
+                    paramType = $(elem).find('.data-wrapper').data('type') || 'row',
+                    paramValue = null;
+                switch (paramType) {
+                    case 'date':
+                        paramValue = [$(elem).find('.data-wrapper').find('input').val()];
+                        break;
+                    case 'datetime':
+                        paramValue = [[
+                            $(elem).find('.data-wrapper').find('input').eq(0).val(),
+                            $(elem).find('.data-wrapper').find('input').eq(1).val()
+                        ].join(' ')];
+                        break;
+                    case 'row':
+                        paramValue = [$(elem).find('.data-wrapper').find('input').val()];
+                        break;
+                    case 'object':
+                        paramValue = [
+                            $(elem).find('.data-wrapper').find('.select-2-app').val(),
+                            $(elem).find('.data-wrapper').find('.select-2-id').val()
+                        ];
+                        break;
+                    default:
+                        paramValue = [$(elem).find('.data-wrapper').find('input').val()];
+                        break;
+                }
+
+                if (paramValue)
+                    extendedParams[paramName] = [paramType, paramValue]
+            });
+
+            return extendedParams;
+        }
+        /**
+         * @description
+         *
+         * Get message templates from server
+         *
+         */
+        function loadMessageTemplates(obj) {
+            $.ajaxSetup({
+                headers: {
+                    // "Context-Type": "application/json",
+                    "Authorization": "JWT " + token
+                },
+            });
+            var url = (messageType == 'email') ? '/context.io/admin-api/templates/?format=json' : '{% url 'sms_interface:templates' %}';
+            $.get('{% url 'sms_interface:find-contenttypes' %}', function (response) {
+                appModelsTmp = response;
+                appModels = response.map(function(elem) {
+                    return {id: elem.id, text: [elem.app_label, elem.model].join(' ')};
+                });
+            });
+            $.get(url, function (response) {
+                var parentElement = obj.parentElement,
+                    changeHandler = function (e) {
+                        if (!response[this.value])
+                            return;
+                        if (messageType == 'email') {
+                            tinyMCE.activeEditor.setContent(response[this.value].message_html_template || response[this.value].message_text_template);
+                            $("#id_subject").val(response[this.value].subject_template);
+                        }
+                        else {
+                            $('[name=body]').val(response[this.value].message_text_template)
+                        }
+                        renderRequiredParams(response[this.value].required_params, response[this.value].tpl_params);
+                    };
+                obj.remove();
+                var select = $('<select></select>')
+                    .attr("name", "template-id")
+                    .on("change", changeHandler);
+                $(select).append(
+                    $('<option></option>')
+                        .val('')
+                        .html('-----')
+                );
+                for (var i = 0; i < response.length; i++)
+                    $(select).append(
+                        $("<option></option>")
+                            .val(i)
+                            .html(response[i].name)
+                    );
+                $(parentElement).append(select);
+                $(select).select2({width: '100%'});
+            })
+        }
+
+        function renderRequiredParams(required_params, defaultTplParams) {
+            $("#id-required-fields").parent().toggle(required_params.length > 0);
+            $('#id-required-fields').html('');
+            for (var i = 0; i < required_params.length; i++) {
+                $('#id-required-fields').append(
+                    generateParamItem(i, required_params[i])
+                );
+            }
+            applyDefaultParams(defaultTplParams);
+        }
+
+        function applyDefaultParams(params) {
+            if (!params)
+                return;
+            $(".wrapper-item-param").each(function (index, elem) {
+                var label = $(elem).find('label').text(), buf;
+                for (var i = 0; i < params.length; i++)
+                    if (params[i].name == label) {
+                        buf = $(elem).children('select');
+                        buf.val(params[i].data.type);
+                        buf.trigger('change');
+
+                        if (params[i].data.type == 'object') {
+                            buf = $(elem).find('.data-wrapper select');
+                            var appModelParts = params[i].data.value.split('.'),
+                                newValue = appModelsTmp.filter(function(elem) {
+                                    return (elem.app_label == appModelParts[0]) && (elem.model == appModelParts[1]);
+                                });
+                            if (newValue.length == 0)
+                                continue;
+
+                            buf.eq(0).val(newValue[0].id);
+                            buf.eq(0).trigger('change.select2');
+                        }
+                    }
+            });
+        }
+
+        function generateParamItem(i, name) {
+            var typeList = [
+                'row', 'datetime', 'date', 'object'
+            ];
+            var label = $('<label class="item-label" style="display: inline-block; float: right"></label>').attr({'for': 'required-param-' + i.toString()}).html(name),
+                select = $('<select style="text-transform: capitalize"></select>'),
+                input = $('<input type="text" value=""/>'),
+                triangle = $('<span class="triangle"></span>')
+                inputWrapper = $("<div class='data-wrapper'></div>").append(input).attr('id', 'id-control-param-' + i.toString());
+            select.change(onChangeParamType);
+            for (var i = 0; i < typeList.length; i++) {
+                select.append(
+                    $("<option style='text-transform: capitalize' value='" + typeList[i] + "'>" + typeList[i] + "</option>")
+                );
+            }
+
+            var result = $('<div class="wrapper-item-param"></div>').append(select).append(triangle).append(label).append(inputWrapper);
+            result.data('name', name);
+            return result;
+        }
+
+        function onChangeParamType(obj) {
+            var wrapper = $(this).parent().find('.data-wrapper');
+            wrapper.html('');
+            wrapper.data('type', this.value);
+            switch (this.value) {
+                case 'datetime':
+                    wrapper.html('<input type="text" value"" class="date"/>' +
+                        '<input type="text" value"" class="time"/>'
+                    );
+                    wrapper.parent().find('input.date').datepicker({dateFormat: 'dd/mm/yy'});
+                    wrapper.parent().find('input.time').timepicker({timeFormat: 'H:i'});
+                    break;
+                case 'date':
+                    wrapper.append('<input type="text" value""/>');
+                    wrapper.parent().find('input').datepicker({dateFormat: "dd/mm/yy"});
+                    break;
+                case 'row':
+                    wrapper.append('<input type="text" value=""/>');
+                    break;
+                case 'object':
+                    var select = $('<select class="select-2-app"></select>'),
+                        id_select = $('<select class="select-2-id"></select>');
+
+                    $(this).parent().find('.data-wrapper').append(select).append(id_select);
+
+                    select.on('select2:select', function() {
+                        id_select2.val('');
+                        id_select2.trigger('change');
+                    });
+
+                    select.select2({
+                        width: 200,
+                        data: appModels
+                    });
+
+                    id_select2 = id_select.select2({
+                        width: 200,
+                        ajax: {
+                            delay: 250,
+                            headers: {
+                                "Authorization": "JWT " + token
+                            },
+                            url: function () {
+                                return "/sms_interface/api/find/objects/" + $(select).val() + "/"
+                            },
+                            processResults: function (data) {
+                                return {
+                                    results: data.results
+                                };
+                            },
+                            templateResult: function (data) {
+                                return data.text;
+                            }
+                        }
+                    });
+                    break;
+            }
+        }
+
+        function onSubmitForm(obj) {
+            $("#id_params").val(JSON.stringify(getExtraParams()));
+            $(obj).parents('form').submit();
+        }
+
+        $(document).ready(function () {
+            $("#id_preview").on("dblclick", function () {
+                showPreview($("#preview-button")[0], '{{ type_message }}');
+            });
+            if (messageType == 'email')
+                tinyMCE.init({selector: 'textarea#id_body'});
+
+            {% if recipient|length_is:"0" %}
+            $('#id_recipient_id').select2({
+                width: '100%',
+                ajax: {
+                    url: '/core/contacts/',
+                    dataType: 'json',
+                    headers: {
+                        "Authorization": "JWT " + token
+                    },
+                    data: function (params) {
+                        var query = {
+                            search: params.term,
+                            fields: ['id', '__str__', 'phone_mobile', 'email'],
+                            offset: (params.page || 0) * 10,
+                            limit: 10,
+                        }
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data.results, function (obj) {
+                                obj.text = obj.__str__ + ' (' + {% if message_type == 'sms' %}obj.phone_mobile{% else %}obj.email{% endif %} + ')';
+
+                                return obj;
+                            }),
+                            pagination: {
+                                more: data.results.length > 0,
+                            }
+                        };
+                    }
+                }
+            });
+            {% else %}
+                $('#id_recipient_id').select2({ width: '100%' });
+            {% endif %}
+        });
+    </script>
+    <!-- end scripts -->
+
+    <!-- styles -->
+{#    <link rel="stylesheet" href="{% static 'admin/css/dialogs.css' %}"/>#}
+    <link rel="stylesheet" href="{% static 'admin/css/base.css' %}"/>
+    <!-- end styles -->
+
+    <style>
+        body,
+        select {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: #333;
+        }
+
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        select:focus {
+            outline: none;
+        }
+
+        .triangle {
+            position: relative;
+            top: 14px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+
+            border-top: 5px solid rgba(51, 51, 51, .6);
+        }
+        h1 {
+            padding: 10px 15px;
+            border-bottom: 2px solid #e5e5e5;
+            line-height: 36px;
+            font-size: 32px;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 0 0 10px 5px;
+        }
+        textarea {
+            width: 100%;
+        }
+        #id_body {
+            padding: 1rem;
+        }
+        form{
+            padding: 15px;
+        }
+        .form-row {
+            margin-bottom: 10px;
+        }
+        .load-template {
+            color: #28a3fc;
+        }
+        .load-template:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .required-fields{
+            display: none;
+        }
+        .preview-block{
+            display: none;
+        }
+        .wrapper-item-param{
+            padding: 10px;
+            background: #f6f6f6;
+            border: 1px solid #cccccc;
+        }
+        .types-select{
+            margin-left: 20px;
+        }
+        .hide-placeholders{
+            cursor: pointer;
+        }
+
+        /* New styles */
+
+        .errors {
+            padding: 0 15px;
+        }
+
+        .error,
+        .error-message {
+            color: #fa5c46;
+        }
+
+        .error-message {
+            display: none;
+            padding-bottom: 15px;
+        }
+
+        #id_sender_user {
+            width: 100%;
+            height: auto;
+            padding: 11px 15px;
+            border-color: rgba(51, 51, 51, .6);
+            font-size: 14px;
+            line-height: 16px;
+            background-color: transparent;
+        }
+
+        input {
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        label {
+            margin: 0 0 4px;
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            opacity: .4;
+        }
+
+        .row-submit {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .row-submit input[type="button"] {
+            padding: 9px 24px 10px;
+            font-size: 16px;
+            line-height: 21px;
+            border-radius: 50px;
+        }
+
+        .row-submit input[type="button"].submit {
+            background-color: #28a3fc;
+            box-shadow: 0 4px 6px 0 rgba(0,0,0, .1);
+            color: #fdfdfd;
+        }
+
+        .row-submit input[type="button"].preview-button {
+            border: 1px solid rgba(0, 0, 0, .3);
+            color: black;
+            background-color: #fdfdfd;
+            opacity: .6;
+        }
+
+        .row-submit input[type="button"].preview-button:focus {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .row-submit input[type="button"].preview:hover {
+            background-color: rgba(0, 0, 0, .3);
+        }
+
+        .select2.select2-container.select2-container--default {
+            min-height: 44px;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+            padding: 2px 5px 7px;
+        }
+
+        .select2-container .select2-selection--single {
+            height: auto;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 42px;
+            right: 10px;
+        }
+
+        .select2-container .select2-selection--single .select2-selection__rendered {
+            padding: 7px 15px;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            display: flex;
+            align-items: center;
+            padding: 4px 10px;
+            border: none;
+            border-radius: 15px;
+            line-height: 16px;
+            color: rgba(51, 51, 51, .6);
+            background-color: rgba(51, 51, 51, .06);
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice:hover {
+            background-color: rgba(51, 51, 51, .1);
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            margin-right: 7px;
+        }
+
+        .wrapper-item-param {
+            position: relative;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            border: none;
+            background-color: rgba(51, 51, 51, 0.04);
+        }
+
+        .wrapper-item-param select {
+            font-size: 14px;
+            line-height: 16px;
+            background-color: transparent;
+            border: none;
+        }
+
+        .data-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .data-wrapper input {
+            padding: 10px 16px;
+            font-size: 14px;
+            line-height: 16px;
+        }
+
+        .data-wrapper .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 16px;
+            padding: 10px 16px;
+        }
+
+        .data-wrapper .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 36px;
+        }
+
+        .data-wrapper input[type="text"] {
+            flex: 1;
+        }
+
+        .data-wrapper input[type="text"]:nth-child(2) {
+            margin-left: 20px;
+        }
+
+        .data-wrapper .select2-selection__rendered {
+            min-height: 16px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .item-label {
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 400;
+            text-transform: lowercase;
+            color: #098cea;
+            opacity: .8;
+        }
+
+        .item-label::before {
+            display: inline;
+            content: '[[';
+        }
+
+        .item-label::after {
+            display: inline;
+            content: ']]';
+        }
+
+        .preview-block .help-text {
+            font-size: 12px;
+            line-height: 14px;
+            opacity: .4;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container modal-dialogs">
+    <!-- <h1>
+        {% if extra_title %}
+            {{ extra_title }}
+        {% else %}
+            {% trans "Send message" %}: {{ message_type }}
+        {% endif %}
+    </h1> -->
+    <div class="errors">
+        {% for message in messages %}
+            <p class="{{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% if is_allowed %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-row">
+                <label for="id_recipient_id">{% trans "Recipient" %}</label>
+                <select name="recipient_id" id="id_recipient_id" multiple>
+                    {% for r in recipient %}
+                        <option value="{{ r.id }}" class="recipient" {% if recipient %}selected{% endif %}>{{ r }} {% if message_type == 'sms' %}({{ r.phone_mobile }}){% else %}({{ r.email }}){% endif %}
+                        </option>
+                    {% endfor %}
+                </select>
+                <input type="hidden" id="id_recipient" value="{{ recipient_value }}"/>
+            </div>
+            <div class="form-row">
+                <label>{% trans "Template" %}</label>
+                <p class="load-template" onclick="loadMessageTemplates(this)">{% trans "Select template " %}</p>
+            </div>
+            {% for field in form %}
+                <div class="form-row">
+
+                    {% if field.name == 'body' %}
+                        <div class="required-fields">
+                            <div id="id-required-fields"></div>
+                        </div>
+                    {% endif %}
+
+                    {% if field.name != 'params' %}
+                        <label for="id_{{ field.name }}">{{ field.label }}</label>
+                    {% endif %}
+                    {% if field.errors %}
+                        <ul>
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    {% if field.name == 'body' %}
+                        <div class="preview-block">
+                            <span class="preview-placeholder">Preview:</span>
+                            <div id="id_preview"></div>
+                            <span class="help-text">Check the spelling of text, correct errors and  only then send</span>
+                        </div>
+                    {% endif %}
+                    {{ field }}
+                    {% if field.name == 'body' %}
+                        <!-- <div>
+                            <input type="button" id='preview-button' value="{% trans 'Preview' %}"
+                                   onclick="showPreview(this)">
+                        </div> -->
+                    {% endif %}
+                    {% if field.help_text %}
+                        <p class="help">{{ field.help_text }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <div class="error-message">Please fill all fields!</div>
+            <div class="row-submit">
+                <input class="preview-button" type="button" id='preview-button' value="{% trans 'Preview' %}"
+                                   onclick="showPreview(this)">
+                <input class="submit" type="button" onclick="onSubmitForm(this)" value="{% trans 'Send message' %}">
+            </div>
+        </form>
+    {% else %}
+        <h2>{% trans "Unavailable service" %}: {{ allowed_message_info }}</h2>
+    {% endif %}
+</div>
+</body>
+</html>

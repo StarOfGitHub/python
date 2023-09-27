@@ -1,0 +1,912 @@
+[
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 1,
+    "fields": {
+        "name": "Supervisor TimeSheet Sign",
+        "slug": "supervisor-timesheet-sign",
+        "message_text_template": "Hi [[supervisor]] please approve hours for your worker(s) . Please approve or change the hours submitted by clinking the link [[get_url]] Please do so urgently so that workers can get paid for hours worked. If you cannot access the link simply reply LOGIN to this email and a new link will be sent to you. Alternatively you can submit your hours on a computer: [[site_url]] -> Customer Access. Thank you!",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "Supervisor TimeSheet Sign",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\r\n\t</div>\r\n\r\n\t<div style=\"max-width: 500px; margin: 0 auto\">\r\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t<div style=\"margin: 13px 0 5px\">\r\n\t\t\t\tHi [[supervisor]] please approve hours for your worker(s) . Please approve or change the hours submitted by clinking the link [[get_url]] Please do so urgently so that workers can get paid for hours worked. If you cannot access the link simply reply LOGIN to this email and a new link will be sent to you. Alternatively you can submit your hours on a computer: [[site_url]] -> Customer Access. Thank you!\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tKind regards, <br>\r\n\t\tPiipAi team\r\n\t</div>\r\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 2,
+    "fields": {
+        "name": "Client invoice",
+        "slug": "client-invoice",
+        "message_text_template": "Dear Client, please find your invoice and timesheets attached!\r\n\r\nBest Regards,\r\n[[master_company_contact]]\r\n[[master_company]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "Invoice from [[master_company]]",
+        "message_html_template": "<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"background-color: #f5f5f5; padding: 10px; font-family: Arial, sans-serif; color: #333; text-align: center; width: 100%\">\r\n\t<tr><td colspan=\"3\" style=\"padding: 0px; margin: 0px; font-size: 20px; height: 20px;\" height=\"20\">&nbsp;</td></tr>\r\n\t<tr>\r\n\t\t<td style=\"padding: 0px;margin: 0px;\">&nbsp;</td>\r\n\t\t<td style=\"padding:0px;margin:0px;width: 540px\" width=\"540\">\r\n\t\t\t<div style=\"box-shadow: 0 0 15px 0 rgba(51, 51, 51, 0.1); margin: 0 auto; background: #fff; padding-bottom: 25px; border-radius: 5px\">\r\n\t\t\t\t<div style=\"text-align: center;\tpadding: 16px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc; border-top-left-radius: 5px; border-top-right-radius: 5px\">\r\n\t\t\t\t\t<img style=\"height: 34px\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div style=\"margin-top: 24px; padding: 0 10px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\r\n\t\t\t\t\t<div style=\"display: inline-block; height: 32px; width: 42px; margin: 0 auto 12px;\tpadding: 24px 19px;\tborder: 2px solid #333; border-radius: 50%;\">\r\n\t\t\t\t\t\t<img src=\"https://piipai.com/assets/img/letter.png\" alt=\"Email\" width=\"32\">\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<br>\r\n\t\t\t\t\t<span>Client invoice</span>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div style=\"width: 60px; padding: 1px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t\t\t\t<div style=\"max-width: 500px; margin: 0 auto; padding: 0 10px; text-align: center\">\r\n\r\n\t\t\t\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t\t\t\t<p>Dear Client, please find your invoice and timesheets attached!</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div style=\"width: 60px; padding: 1px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t\t\t\t<div style=\"margin-top: 16px; padding: 0 10px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\t\t\t\tBest Regards, <br>\r\n\t\t\t\t\t[[master_company_contact]] <br>\r\n\t\t\t\t\t[[master_company]]\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</td>\r\n\t\t<td style=\"padding: 0px;margin: 0px;\">&nbsp;</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td style=\"padding: 0px;margin: 0px;\">&nbsp;</td>\r\n\t\t<td width=\"540\" style=\"font-size: 14px; line-height: 18px; margin: 0; padding: 15px 0; width: 540px\">\r\n\t\t\t<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"100%\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td align=\"left\" valign=\"top\" style=\"width: 50%\">\r\n\t\t\t\t\t\t<span style=\"display: inline-block; min-width: 240px; float: left; color: #4f4f4f; font-size: 12px; line-height: 16px; text-align: left\">\u00a9 2019 Resourcer Software Limited <br> <a href=\"https://piipai.com\">https://piipai.com</a></span>\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td align=\"right\" valign=\"top\" style=\"width: 50%\">\r\n\t\t\t\t\t\t<img style=\"margin-bottom: 5px\" src=\"https://piipai.com/assets/img/app_store.png\" alt=\"Apple store\" height=\"36\">\r\n\t\t\t\t\t\t<img style=\"margin-bottom: 5px\" src=\"https://piipai.com/assets/img/app-store-android-download.png\" alt=\"Google Play\" height=\"36\">\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t\t<td style=\"padding: 0px;margin: 0px;\">&nbsp;</td>\r\n\t</tr>\r\n\t<tr><td colspan=\"3\" style=\"padding: 0px; margin: 0px; font-size: 20px; height: 20px;\" height=\"20\">&nbsp;</td></tr>\r\n</table>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 3,
+    "fields": {
+        "name": "Trial E-mail verification success",
+        "slug": "trial-e-mail-verification-success",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "Welcome to PiipAi",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\r\n\t</div>\r\n\r\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\r\n\t\t<span>Trial E-mail verification success</span>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"max-width: 500px; margin: 0 auto\">\r\n\r\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t<p>Hi [[contact__first_name]],</p>\r\n\t\t\t<p>Good news! Your free 30 day trial account is setup for [[master_company]]!</p>\r\n\t\t\t<p>\r\n\t\t\t\tUsername: <b style=\"color: #4f4f4f\">[[contact__email]]</b> <br>\r\n\t\t\t\tPassword: <b style=\"color: #4f4f4f\">[[password]]</b>\r\n\t\t\t</p>\r\n\t\t\t<p>Your portal access is through <a href=\"https://[[subdomain]].piipai.com\">[[subdomain]].piipai.com</a>.</p>\r\n\t\t\t<p>You can start using it now! Our account manager will contact you in 1 business day. He/she will help you to finalize additional setup is needed and will organize online and onsite training for your company!</p>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tBest Regards, <br>\r\n\t\tPiipAi Administrator\r\n\t</div>\r\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 4,
+    "fields": {
+        "name": "E-mail verification success",
+        "slug": "e-mail-verification-success",
+        "message_text_template": "Dear [[contact]],\r\n\r\nWelcome to PiipAi - human resources automation framework!\r\n\r\nYour newly generated password is:\r\n\r\n[[password]]\r\n\r\nUsername: [[username]]\r\n\r\nYou can change this password after logging in!\r\n\r\nTo access our self-service portal please go to:\r\nAddress: [[master_company_url]]\r\n\r\nIf you have any questions about PiipAi, please let us know. We would be happy to help!\r\n\r\nKind regards,\r\n[[manager]]\r\n[[master_company]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "Welcome to PiipAi",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\r\n\t</div>\r\n\r\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\r\n\t\t<span>E-mail verification success</span>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"max-width: 500px; margin: 0 auto\">\r\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t<p>Dear [[contact]],</p>\r\n\t\t\tWelcome to PiipAi - human resources automation framework!\r\n\t\t\t<div style=\"margin: 13px 0 5px\">Your newly generated password is <b style=\"color: #4f4f4f\">[[password]]</b></div>\r\n\t\t\t<div style=\"margin: 5px 0 13px\">Username: <b style=\"color: #4f4f4f\">[[username]]</b></div>\r\n\t\t\tYou can change this password after logging in! <br>\r\n\t\t\t<p>To access our self-service portal please go to: <br>\tAddress: <a href=\"[[master_company_url]]\" style=\"color: #0684e0;\" target=\"_blank\">[[master_company_url]]</a>.</p>\r\n\t\t\tIf you have any questions about PiipAi, please let us know. We would be happy to help!\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tKind regards, <br>\r\n\t\t[[manager]] <br>\r\n\t\t[[master_company]]\r\n\t</div>\r\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 5,
+    "fields": {
+        "name": "Candidate TimeSheet Hours (old shift)",
+        "slug": "candidate-timesheet-hours-old",
+        "message_text_template": "Hi [[candidate_contact]] please click on the link [[get_fill_time_sheet_url]] to submit your timesheet for hours worked on [[shift_end_date]]. Once you have submitted your hours, your site foreman today will be asked to approve them. Please make sure you are accurate and honest or your hours will not get approved. If you are unable to open the link, please submit your hours on a computer: [[site_url]] -> Customer Access. Thank you.",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "Please fill time sheet",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\r\n\t</div>\r\n\r\n\t<div style=\"max-width: 500px; margin: 0 auto\">\r\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t<div style=\"margin: 13px 0 5px\">\r\n\t\t\t\tHi [[candidate_contact]] please click on the link [[get_fill_time_sheet_url]] to submit your timesheet for hours worked on [[shift_end_date]]. Once you have submitted your hours, your site foreman today will be asked to approve them. Please make sure you are accurate and honest or your hours will not get approved. If you are unable to open the link, please submit your hours on a computer: [[site_url]] -> Customer Access. Thank you.\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tKind regards, <br>\r\n\t\tPiipAi team\r\n\t</div>\r\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 6,
+    "fields": {
+        "name": "Contact E-mail Verification",
+        "slug": "contact-e-mail-verification",
+        "message_text_template": "Dear [[contact]], \r\nWelcome to PiipAi. Please verify your email: [[email_verification_link]]. \r\nBest regards, [[manager]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "E-mail Verification",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\r\n\t</div>\r\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\r\n\t\t<div style=\"height: 32px; width: 42px; margin: 0 auto 12px;\tpadding: 24px 19px;\tborder: 2px solid #333; border-radius: 50%;\">\r\n\t\t\t<img src=\"https://piipai.com/assets/img/letter.png\" alt=\"Email\" width=\"32\">\r\n\t\t</div>\r\n\t\t<span>Email verification</span>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"margin-top: 28px; margin-bottom: 4px; font-size: 16px; line-height: 24px; font-weight: bold; text-align: center; color: #4f4f4f;\">Dear [[contact]],</div>\r\n\t<div style=\"font-size: 14px; line-height: 18px;\ttext-align: center; color: #333\">Welcome to PiipAi. Please verify your email:</div>\r\n\t<a style=\"display: block; width: 120px; margin: 20px auto 0; padding: 14px 68px; font-size: 16px; line-height: 21px; font-weight: bold; text-align: center; color: white; border-radius: 50px; background-color: #28a3fc; text-decoration: none !important;\" href=\"[[email_verification_link]]\" target=\"_blank\">Verify email</a>\r\n\t<div style=\"margin-top: 16px; margin-bottom: 26px; font-size: 12px; line-height: 16px; text-align: center; color: #c2c2c2;\">\r\n\t\t<span style=\"color: #c2c2c2;\">or copy and paste this link into your browser:</span> <br>\r\n\t\t<a href=\"[[email_verification_link]]\" style=\"color: #0684e0;\" target=\"_blank\">[[email_verification_link]]</a>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tBest regards, <br>\r\n\t\t[[manager]]\r\n\t</div>\r\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 7,
+    "fields": {
+        "name": "Candidate TimeSheet Hours",
+        "slug": "candidate-timesheet-hours",
+        "message_text_template": "Hi [[candidate_contact]] please click on the link [[get_fill_time_sheet_url]] to submit your timesheet for hours worked today. Once you have submitted your hours, your site foreman today will be asked to approve them. Please make sure you are accurate and honest or your hours will not get approved. If you are unable to open the link, please submit your hours on a computer: [[site_url]] -> Customer Access. Thank you.",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "Please fill time sheet",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\r\n\t</div>\r\n\r\n\t<div style=\"max-width: 500px; margin: 0 auto\">\r\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t<div style=\"margin: 13px 0 5px\">\r\n\t\t\t\tHi [[candidate_contact]] please click on the link [[get_fill_time_sheet_url]] to submit your timesheet for hours worked today. Once you have submitted your hours, your site foreman today will be asked to approve them. Please make sure you are accurate and honest or your hours will not get approved. If you are unable to open the link, please submit your hours on a computer: [[site_url]] -> Customer Access. Thank you.\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tKind regards, <br>\r\n\t\tPiipAi team\r\n\t</div>\r\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 8,
+    "fields": {
+        "name": "Generated password",
+        "slug": "generated-password",
+        "message_text_template": "Dear [[contact]],\r\n\r\nYou have requested a password change! Your newly generated password is:\r\n\r\n[[password]]\r\n\r\nWe recommend you to change this password on your next login.\r\nYou can use the following login details to access it:\r\nAddress: [[site_url]]\r\nUsername: [[email]]\r\n\r\nIf there's anything we can do to help about login related issues or if you have any questions about PiipAi, please let us know. We are happy to help.\r\n\r\nKind regards, PiipAi team",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "Forgot password",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\r\n\t</div>\r\n\r\n\t<div style=\"max-width: 500px; margin: 0 auto\">\r\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t<p>Dear [[contact]],</p>\r\n\t\t\t\r\n\t\t\t<div style=\"margin: 13px 0 5px\">\r\n\t\t\t\tYou have requested a password change! <br>\r\n\t\t\t\tYour newly generated password is <b style=\"color: #4f4f4f\">[[password]]</b>\r\n\t\t\t</div>\r\n\r\n\t\t\t<p>We recommend you to change this password on your next login. <br>\r\n\t\t\t\tYou can use the following login details to access it:</p>\r\n\r\n\t\t\t<div style=\"margin: 5px 0 13px\">\r\n\t\t\t\tAddress: <b style=\"color: #4f4f4f\">[[site_url]]</b> <br>\r\n\t\t\t\tUsername: <b style=\"color: #4f4f4f\">[[email]]</b>\r\n\t\t\t</div>\r\n\t\t\t\r\n\t\t\t<p>If there's anything we can do to help about login related issues or if you have any questions about PiipAi, please let us know. We are happy to help.</p>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tKind regards, <br>\r\n\t\tPiipAi team\r\n\t</div>\r\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 10,
+    "fields": {
+        "name": "Supervisor TimeSheet Sign Reminder",
+        "slug": "supervisor-timesheet-sign-reminder",
+        "message_text_template": "Hi [[supervisor]] we have not yet received your approval for the hours worked on your jobsite today. Please approve or change the hours submitted by clicking the link [[get_url]] or open on your computer https://piipai.com. Please note failure to do so, will result in workers not getting paid for today, and can affect the price of your next order. If you have any issues please contact [[portfolio_manager]] [[portfolio_manager__contact__phone_mobile]] immediately. Thank you",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "Sign time sheets reminder",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\r\n\t</div>\r\n\r\n\t<div style=\"max-width: 500px; margin: 0 auto\">\r\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t<div style=\"margin: 13px 0 5px\">\r\n\t\t\t\tHi [[supervisor]] we have not yet received your approval for the hours worked on your jobsite today. Please approve or change the hours submitted by clicking the link [[get_url]] or open on your computer https://PiipAitest.com. Please note failure to do so, will result in workers not getting paid for today, and can affect the price of your next order. If you have any issues please contact [[portfolio_manager]] [[portfolio_manager__contact__phone_mobile]] immediately. Thank you\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tKind regards, <br>\r\n\t\tPiipAi team\r\n\t</div>\r\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 11,
+    "fields": {
+        "name": "Trial User Register",
+        "slug": "trial-user-email-verification",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "New user",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\r\n\t</div>\r\n\r\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\r\n\t\t<span>Trial User Email Verification</span>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"max-width: 500px; margin: 0 auto\">\r\n\r\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\r\n\t\t\t<p>Hi [[contact__first_name]],</p>\r\n\t\t\t<p>Thanks for signing up! <br> You\u2019re just one step away from fully activating your new PiipAi trial account.</p>\r\n\r\n\t\t\t<p>\r\n\t\t\t\tPlease hit the verification button below, enter your details and experience our cloud-based software!\r\n\t\t\t\t<a style=\"display: block; width: 60px; margin: 20px auto; padding: 14px 68px; font-size: 16px; line-height: 21px; font-weight: bold; text-align: center; color: white; border-radius: 50px; background-color: #28a3fc; text-decoration: none !important;\" href=\"[[verification_url]]\" target=\"_blank\">Verify</a>\r\n\t\t\t\tOnce done, we will send you an email with your login details and further instructions.\r\n\t\t\t</p>\r\n\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tBest Regards, <br>\r\n\t\tPiipAi Administrator\r\n\t</div>\r\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 12,
+    "fields": {
+        "name": "Sms Balance Ran Out",
+        "slug": "sms-balance-ran-out",
+        "message_text_template": "Dear [[contact__first_name]], Your sms balance in PiipAi has ran out, please top-up your balance now to re-activate services. No sms are getting currently sent out and functionality is limited. Best Regards, PiipAi Team\n",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "Sms balance has ran out",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\n\t</div>\n\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<span>Sms balance has ran out</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"max-width: 500px; margin: 0 auto\">\n\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\n\t\t\t<p>Dear [[contact__first_name]],</p>\n\t\t\t<p>Your sms balance in PiipAi has ran out, please top-up your balance now to re-activate services. No sms are getting currently sent out and functionality is limited.</p>\n\t\t</div>\n\t</div>\n\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\n\t\tBest Regards, <br>\n\t\tPiipAi Team\n\t</div>\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 13,
+    "fields": {
+        "name": "Sms Balance Is Low",
+        "slug": "sms-balance-is-low",
+        "message_text_template": "Dear [[contact__first_name]], Your sms balance in PiipAi has dropped below 20 [[currency]], please top-up your balance now to avoid service suspension. No sms will be sent out if this happens and functionality will be limited. Best Regards, PiipAi Team\n",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "Sms balance is low",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\n\t</div>\n\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<span>Sms balance has ran out</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"max-width: 500px; margin: 0 auto\">\n\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\n\t\t\t<p>Dear [[contact__first_name]],</p>\n\t\t\t<p>Your sms balance in PiipAi has dropped below $(currency should be country specific)20, please top-up your balance now to avoid service suspension. No sms will be sent out if this happens and functionality will be limited.</p>\n\t\t</div>\n\t</div>\n\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\n\t\tBest Regards, <br>\n\t\tPiipAi Team\n\t</div>\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 14,
+    "fields": {
+        "name": "Consent message",
+        "slug": "consent-message",
+        "message_text_template": "Hello!\nEmployment database PiipAi has your data previously collected. Potential employer has requested acces to your data including your contacts to reach you. If you agree to share this data, please open the link below and click on Approve button!.\n [[candidate_consent_url]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "PiipAi needs your consent",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\n\t</div>\n\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<span>PiipAi needs your consent</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"max-width: 500px; margin: 0 auto\">\n\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\n\t\t\t<p>Hello!</p>\n\t\t\t<p>Employment database PiipAi has your data previously collected. Potential employer has requested acces to your data including your contacts to reach you. If you agree to share this data, please open the link below and click on Approve button!</p>\n\t\t\t<p>[[candidate_consent_url]]</p>\n\t\t</div>\n\t</div>\n\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\n\t\tBest Regards, <br>\n\t\tPiipAi\n\t</div>\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 15,
+    "fields": {
+        "name": "Consent message",
+        "slug": "consent-message",
+        "message_text_template": "\u0411\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445 \u043f\u043e \u0442\u0440\u0443\u0434\u043e\u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0443 PiipAi \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u0432\u0430\u0448\u0438 \u0434\u0430\u043d\u043d\u044b\u0435, \u0441\u043e\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u0440\u0430\u043d\u0435\u0435. \u041f\u043e\u0442\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0431\u043e\u0442\u043e\u0434\u0430\u0442\u0435\u043b\u044c \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u043b \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0432\u0430\u0448\u0438\u043c \u0434\u0430\u043d\u043d\u044b\u043c, \u0432\u043a\u043b\u044e\u0447\u0430\u044f \u0432\u0430\u0448\u0438 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u044b, \u0447\u0442\u043e\u0431\u044b \u0441\u0432\u044f\u0437\u0430\u0442\u044c\u0441\u044f \u0441 \u0432\u0430\u043c\u0438. \u0415\u0441\u043b\u0438 \u0432\u044b \u0441\u043e\u0433\u043b\u0430\u0441\u043d\u044b \u043f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u044d\u0442\u0438\u043c\u0438 \u0434\u0430\u043d\u043d\u044b\u043c\u0438, \u043f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u043f\u043e \u0441\u0441\u044b\u043b\u043a\u0435 \u043d\u0438\u0436\u0435 \u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 \u00ab\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c\u00bb!\n [[candidate_consent_url]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "PiipAi needs your consent",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\n\t</div>\n\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<span>PiipAi needs your consent</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"max-width: 500px; margin: 0 auto\">\n\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\n\t\t\t<p>Hello!</p>\n\t\t\t<p>\u0411\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445 \u043f\u043e \u0442\u0440\u0443\u0434\u043e\u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0443 PiipAi \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u0432\u0430\u0448\u0438 \u0434\u0430\u043d\u043d\u044b\u0435, \u0441\u043e\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u0440\u0430\u043d\u0435\u0435. \u041f\u043e\u0442\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0431\u043e\u0442\u043e\u0434\u0430\u0442\u0435\u043b\u044c \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u043b \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0432\u0430\u0448\u0438\u043c \u0434\u0430\u043d\u043d\u044b\u043c, \u0432\u043a\u043b\u044e\u0447\u0430\u044f \u0432\u0430\u0448\u0438 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u044b, \u0447\u0442\u043e\u0431\u044b \u0441\u0432\u044f\u0437\u0430\u0442\u044c\u0441\u044f \u0441 \u0432\u0430\u043c\u0438. \u0415\u0441\u043b\u0438 \u0432\u044b \u0441\u043e\u0433\u043b\u0430\u0441\u043d\u044b \u043f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u044d\u0442\u0438\u043c\u0438 \u0434\u0430\u043d\u043d\u044b\u043c\u0438, \u043f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u043f\u043e \u0441\u0441\u044b\u043b\u043a\u0435 \u043d\u0438\u0436\u0435 \u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 \u00ab\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c\u00bb!</p>\n\t\t\t<p>[[candidate_consent_url]]</p>\n\t\t</div>\n\t</div>\n\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\n\t\tBest Regards, <br>\n\t\tPiipAi\n\t</div>\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 16,
+    "fields": {
+        "name": "Consent message",
+        "slug": "consent-message",
+        "message_text_template": "Hello!\nR3sourseri t\u00f6\u00f6h\u00f5ive andmebaas sisaldab teie varem kogutud andmeid. Potentsiaalne t\u00f6\u00f6andja on teiega \u00fchenduse v\u00f5tmiseks taotlenud juurdep\u00e4\u00e4su teie andmetele, sealhulgas teie kontaktidele. Kui n\u00f5ustute neid andmeid jagama, j\u00e4rgige allolevat linki ja kl\u00f5psake nuppu \"Kinnita\"!\n [[candidate_consent_url]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "PiipAi needs your consent",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\n\t</div>\n\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<span>PiipAi needs your consent</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"max-width: 500px; margin: 0 auto\">\n\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\n\t\t\t<p>Hello!</p>\n\t\t\t<p>R3sourseri t\u00f6\u00f6h\u00f5ive andmebaas sisaldab teie varem kogutud andmeid. Potentsiaalne t\u00f6\u00f6andja on teiega \u00fchenduse v\u00f5tmiseks taotlenud juurdep\u00e4\u00e4su teie andmetele, sealhulgas teie kontaktidele. Kui n\u00f5ustute neid andmeid jagama, j\u00e4rgige allolevat linki ja kl\u00f5psake nuppu \"Kinnita\"!</p>\n\t\t\t<p>[[candidate_consent_url]]</p>\n\t\t</div>\n\t</div>\n\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\n\t\tBest Regards, <br>\n\t\tPiipAi\n\t</div>\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 17,
+    "fields": {
+        "name": "Login Token",
+        "slug": "login-token",
+        "message_text_template": "Email login for [[contact]].\nPlease follow this link: [[auth_url]].\nIf the link has expired please request a new one by visiting [[project_url]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "Email login",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\n\t</div>\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<div style=\"height: 32px; width: 42px; margin: 0 auto 12px;\tpadding: 24px 19px;\tborder: 2px solid #333; border-radius: 50%;\">\n\t\t\t<img src=\"https://piipai.com/assets/img/letter.png\" alt=\"Email\" width=\"32\">\n\t\t</div>\n\t\t<span>Email login</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"margin-top: 28px; margin-bottom: 4px; font-size: 16px; line-height: 24px; font-weight: bold; text-align: center; color: #4f4f4f;\">Email login for [[contact]].</div>\n\t<div style=\"font-size: 14px; line-height: 18px;\ttext-align: center; color: #333\">Please follow this link: </div>\n\t<a style=\"display: block; width: 120px; margin: 20px auto 0; padding: 14px 68px; font-size: 16px; line-height: 21px; font-weight: bold; text-align: center; color: white; border-radius: 50px; background-color: #28a3fc; text-decoration: none !important;\" href=\"[[auth_url]]\" target=\"_blank\">Login</a>\n\t<div style=\"margin-top: 16px; margin-bottom: 26px; font-size: 12px; line-height: 16px; text-align: center; color: #c2c2c2;\">\n\t\t<span style=\"color: #c2c2c2;\">or copy and paste this link into your browser:</span> <br>\n\t\t<a href=\"[[auth_url]]\" style=\"color: #0684e0;\" target=\"_blank\">[[auth_url]]</a>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\">If the link has expired please request a new one by visiting [[project_url]]</div>\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 18,
+    "fields": {
+        "name": "Login Token",
+        "slug": "login-token",
+        "message_text_template": "Email login for [[contact]].\nPlease follow this link: [[auth_url]].\nIf the link has expired please request a new one by visiting [[project_url]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "Email login",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\n\t</div>\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<div style=\"height: 32px; width: 42px; margin: 0 auto 12px;\tpadding: 24px 19px;\tborder: 2px solid #333; border-radius: 50%;\">\n\t\t\t<img src=\"https://piipai.com/assets/img/letter.png\" alt=\"Email\" width=\"32\">\n\t\t</div>\n\t\t<span>Email login</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"margin-top: 28px; margin-bottom: 4px; font-size: 16px; line-height: 24px; font-weight: bold; text-align: center; color: #4f4f4f;\">Email login for [[contact]].</div>\n\t<div style=\"font-size: 14px; line-height: 18px;\ttext-align: center; color: #333\">Please follow this link: </div>\n\t<a style=\"display: block; width: 120px; margin: 20px auto 0; padding: 14px 68px; font-size: 16px; line-height: 21px; font-weight: bold; text-align: center; color: white; border-radius: 50px; background-color: #28a3fc; text-decoration: none !important;\" href=\"[[auth_url]]\" target=\"_blank\">Login</a>\n\t<div style=\"margin-top: 16px; margin-bottom: 26px; font-size: 12px; line-height: 16px; text-align: center; color: #c2c2c2;\">\n\t\t<span style=\"color: #c2c2c2;\">or copy and paste this link into your browser:</span> <br>\n\t\t<a href=\"[[auth_url]]\" style=\"color: #0684e0;\" target=\"_blank\">[[auth_url]]</a>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\">If the link has expired please request a new one by visiting [[project_url]]</div>\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 19,
+    "fields": {
+        "name": "Login Token",
+        "slug": "login-token",
+        "message_text_template": "Email login for [[contact]].\nPlease follow this link: [[auth_url]].\nIf the link has expired please request a new one by visiting [[project_url]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "Email login",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\n\t</div>\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<div style=\"height: 32px; width: 42px; margin: 0 auto 12px;\tpadding: 24px 19px;\tborder: 2px solid #333; border-radius: 50%;\">\n\t\t\t<img src=\"https://piipai.com/assets/img/letter.png\" alt=\"Email\" width=\"32\">\n\t\t</div>\n\t\t<span>Email login</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"margin-top: 28px; margin-bottom: 4px; font-size: 16px; line-height: 24px; font-weight: bold; text-align: center; color: #4f4f4f;\">Email login for [[contact]].</div>\n\t<div style=\"font-size: 14px; line-height: 18px;\ttext-align: center; color: #333\">Please follow this link: </div>\n\t<a style=\"display: block; width: 120px; margin: 20px auto 0; padding: 14px 68px; font-size: 16px; line-height: 21px; font-weight: bold; text-align: center; color: white; border-radius: 50px; background-color: #28a3fc; text-decoration: none !important;\" href=\"[[auth_url]]\" target=\"_blank\">Login</a>\n\t<div style=\"margin-top: 16px; margin-bottom: 26px; font-size: 12px; line-height: 16px; text-align: center; color: #c2c2c2;\">\n\t\t<span style=\"color: #c2c2c2;\">or copy and paste this link into your browser:</span> <br>\n\t\t<a href=\"[[auth_url]]\" style=\"color: #0684e0;\" target=\"_blank\">[[auth_url]]</a>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\">If the link has expired please request a new one by visiting [[project_url]]</div>\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 20,
+    "fields": {
+        "name": "Consent message",
+        "slug": "consent-message",
+        "message_text_template": "Hello!\nPiipAiin ty\u00f6llisyystietokanta sis\u00e4lt\u00e4\u00e4 aiemmin ker\u00e4tyt tiedot. Mahdollinen ty\u00f6nantaja on pyyt\u00e4nyt p\u00e4\u00e4sy\u00e4 tietoihisi, mukaan lukien yhteystietosi, ottaakseen sinuun yhteytt\u00e4. Jos suostut jakamaan n\u00e4m\u00e4 tiedot, seuraa alla olevaa linkki\u00e4 ja napsauta \"Vahvista\" -painiketta!\n [[candidate_consent_url]]",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi",
+        "subject_template": "PiipAi needs your consent",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\n\t</div>\n\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\n\t\t<span>PiipAi needs your consent</span>\n\t</div>\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\n\t<div style=\"max-width: 500px; margin: 0 auto\">\n\n\t\t<div style=\"font-size: 14px; line-height: 18px; color: #333; margin-top: 28px;\">\n\t\t\t<p>Hello!</p>\n\t\t\t<p>PiipAiin ty\u00f6llisyystietokanta sis\u00e4lt\u00e4\u00e4 aiemmin ker\u00e4tyt tiedot. Mahdollinen ty\u00f6nantaja on pyyt\u00e4nyt p\u00e4\u00e4sy\u00e4 tietoihisi, mukaan lukien yhteystietosi, ottaakseen sinuun yhteytt\u00e4. Jos suostut jakamaan n\u00e4m\u00e4 tiedot, seuraa alla olevaa linkki\u00e4 ja napsauta \"Vahvista\" -painiketta!</p>\n\t\t\t<p>[[candidate_consent_url]]</p>\n\t\t</div>\n\t</div>\n\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc; margin-top: 16px;\"></div>\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\n\t\tBest Regards, <br>\n\t\tPiipAi\n\t</div>\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 21,
+    "fields": {
+        "name": "Contact E-mail Verification",
+        "slug": "contact-e-mail-verification",
+        "message_text_template": "Tere [[contact]], \r\nTere tulemast PiipAii kasutajaks! Palun kinnita oma email: [[email_verification_link]].\r\nParimate soovidega, [[manager]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "Emaili kinnitamine",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\r\n\t</div>\r\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\r\n\t\t<div style=\"height: 32px; width: 42px; margin: 0 auto 12px;\tpadding: 24px 19px;\tborder: 2px solid #333; border-radius: 50%;\">\r\n\t\t\t<img src=\"https://piipai.com/assets/img/letter.png\" alt=\"Email\" width=\"32\">\r\n\t\t</div>\r\n\t\t<span>Emaili kinnitamine</span>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"margin-top: 28px; margin-bottom: 4px; font-size: 16px; line-height: 24px; font-weight: bold; text-align: center; color: #4f4f4f;\">Tere [[contact]],</div>\r\n\t<div style=\"font-size: 14px; line-height: 18px;\ttext-align: center; color: #333\">Tere tulemast PiipAii kasutajaks! Palun kinnita oma email:</div>\r\n\t<a style=\"display: block; width: 120px; margin: 20px auto 0; padding: 14px 68px; font-size: 16px; line-height: 21px; font-weight: bold; text-align: center; color: white; border-radius: 50px; background-color: #28a3fc; text-decoration: none !important;\" href=\"[[email_verification_link]]\" target=\"_blank\">Kinnita</a>\r\n\t<div style=\"margin-top: 16px; margin-bottom: 26px; font-size: 12px; line-height: 16px; text-align: center; color: #c2c2c2;\">\r\n\t\t<span style=\"color: #c2c2c2;\">v\u00f5i kopeeri link oma veebilehitsejasse.</span> <br>\r\n\t\t<a href=\"[[email_verification_link]]\" style=\"color: #0684e0;\" target=\"_blank\">[[email_verification_link]]</a>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\tParimate soovidega, <br>\r\n\t\t[[manager]]\r\n\t</div>\r\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 22,
+    "fields": {
+        "name": "Contact E-mail Verification",
+        "slug": "contact-e-mail-verification",
+        "message_text_template": "\u0423\u0432\u0430\u0436\u0430\u0435\u043c\u044b\u0439 [[contact]], \r\n\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c \u0432 PiipAi. \u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0441\u0432\u043e\u0439 \u0430\u0434\u0440\u0435\u0441 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0439 \u043f\u043e\u0447\u0442\u044b: [[email_verification_link]].\r\n\u0421 \u0443\u0432\u0430\u0436\u0435\u043d\u0438\u0435\u043c, [[manager]]",
+        "reply_timeout": 10,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u0430\u0434\u0440\u0435\u0441\u0430 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0439 \u043f\u043e\u0447\u0442\u044b",
+        "message_html_template": "<div style=\"max-width: 850px; color: #333; font-family: Arial, sans-serif;\">\r\n\t<div style=\"text-align: center;\theight: 66px; background-image: linear-gradient(to top, #0061a2, #28a3fc); background-color: #28a3fc;\">\r\n\t\t<img style=\"height: 34px; margin-top: 16px;\" src=\"https://piipai.com/assets/img/new-software-white.png\" alt=\"PiipAi\">\r\n\t</div>\r\n\t<div style=\"margin-top: 24px; margin-bottom: 16px; font-size: 22px;\tline-height: 28px; text-align: center; color: #333\">\r\n\t\t<div style=\"height: 32px; width: 42px; margin: 0 auto 12px;\tpadding: 24px 19px;\tborder: 2px solid #333; border-radius: 50%;\">\r\n\t\t\t<img src=\"https://piipai.com/assets/img/letter.png\" alt=\"Email\" width=\"32\">\r\n\t\t</div>\r\n\t\t<span>Email verification</span>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"margin-top: 28px; margin-bottom: 4px; font-size: 16px; line-height: 24px; font-weight: bold; text-align: center; color: #4f4f4f;\">\u0423\u0432\u0430\u0436\u0430\u0435\u043c\u044b\u0439 [[contact]],</div>\r\n\t<div style=\"font-size: 14px; line-height: 18px;\ttext-align: center; color: #333\">\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c \u0432 PiipAi. \u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0441\u0432\u043e\u0439 \u0430\u0434\u0440\u0435\u0441 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0439 \u043f\u043e\u0447\u0442\u044b:</div>\r\n\t<a style=\"display: block; width: 120px; margin: 20px auto 0; padding: 14px 68px; font-size: 16px; line-height: 21px; font-weight: bold; text-align: center; color: white; border-radius: 50px; background-color: #28a3fc; text-decoration: none !important;\" href=\"[[email_verification_link]]\" target=\"_blank\">\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0439 \u043f\u043e\u0447\u0442\u044b: </a>\r\n\t<div style=\"margin-top: 16px; margin-bottom: 26px; font-size: 12px; line-height: 16px; text-align: center; color: #c2c2c2;\">\r\n\t\t<span style=\"color: #c2c2c2;\">\u0438\u043b\u0438 \u0441\u043a\u043e\u043f\u0438\u0440\u0443\u0439\u0442\u0435 \u0438 \u0432\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u044d\u0442\u0443 \u0441\u0441\u044b\u043b\u043a\u0443 \u0432 \u0441\u0432\u043e\u0439 \u0431\u0440\u0430\u0443\u0437\u0435\u0440:</span> <br>\r\n\t\t<a href=\"[[email_verification_link]]\" style=\"color: #0684e0;\" target=\"_blank\">[[email_verification_link]]</a>\r\n\t</div>\r\n\t<div style=\"width: 60px; height: 2px; margin: 0 auto; background-color: #28a3fc;\"></div>\r\n\t<div style=\"margin-top: 16px; font-size: 14px; line-height: 18px; text-align: center; color: #333\">\r\n\t\t\u0421 \u0443\u0432\u0430\u0436\u0435\u043d\u0438\u0435\u043c, <br>\r\n\t\t[[manager]]\r\n\t</div>\r\n</div>"
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 23,
+    "fields": {
+        "name": "Candidate Going To Work\t",
+        "slug": "candidate-going-to-work",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 24,
+    "fields": {
+        "name": "Candidate JO Cancelled",
+        "slug": "candidate-jo-cancelled",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 25,
+    "fields": {
+        "name": "Candidate JO Cancelled <1 hrs",
+        "slug": "candidate-jo-cancelled-1-hrs",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 26,
+    "fields": {
+        "name": "Candidate TimeSheet Agree",
+        "slug": "candidate-timesheet-agree",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 27,
+    "fields": {
+        "name": "Job Confirmed",
+        "slug": "job-confirmed",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 28,
+    "fields": {
+        "name": "Job Offer 1st\t",
+        "slug": "job-offer-1st",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 29,
+    "fields": {
+        "name": "Job Offer Placement Confirmation",
+        "slug": "job-offer-placement-confirmation",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 30,
+    "fields": {
+        "name": "Job Offer Recurring",
+        "slug": "job-offer-recurring",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 31,
+    "fields": {
+        "name": "Job Offer Rejection",
+        "slug": "job-offer-rejection",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 32,
+    "fields": {
+        "name": "Sms Payment Reminder 24",
+        "slug": "sms-payment-reminder-24",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 33,
+    "fields": {
+        "name": "Sms Payment Reminder 48",
+        "slug": "sms-payment-reminder-48",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "en",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 34,
+    "fields": {
+        "name": "Candidate Going To Work\t",
+        "slug": "candidate-going-to-work",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 35,
+    "fields": {
+        "name": "Candidate JO Cancelled",
+        "slug": "candidate-jo-cancelled",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 36,
+    "fields": {
+        "name": "Candidate JO Cancelled <1 hrs",
+        "slug": "candidate-jo-cancelled-1-hrs",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 37,
+    "fields": {
+        "name": "Candidate TimeSheet Agree",
+        "slug": "candidate-timesheet-agree",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 38,
+    "fields": {
+        "name": "Job Confirmed",
+        "slug": "job-confirmed",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 39,
+    "fields": {
+        "name": "Job Offer 1st\t",
+        "slug": "job-offer-1st",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 40,
+    "fields": {
+        "name": "Job Offer Placement Confirmation",
+        "slug": "job-offer-placement-confirmation",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 41,
+    "fields": {
+        "name": "Job Offer Recurring",
+        "slug": "job-offer-recurring",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 42,
+    "fields": {
+        "name": "Job Offer Rejection",
+        "slug": "job-offer-rejection",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 43,
+    "fields": {
+        "name": "Sms Payment Reminder 24",
+        "slug": "sms-payment-reminder-24",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 44,
+    "fields": {
+        "name": "Sms Payment Reminder 48",
+        "slug": "sms-payment-reminder-48",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "et",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 45,
+    "fields": {
+        "name": "Candidate Going To Work\t",
+        "slug": "candidate-going-to-work",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 46,
+    "fields": {
+        "name": "Candidate JO Cancelled",
+        "slug": "candidate-jo-cancelled",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 47,
+    "fields": {
+        "name": "Candidate JO Cancelled <1 hrs",
+        "slug": "candidate-jo-cancelled-1-hrs",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 48,
+    "fields": {
+        "name": "Candidate TimeSheet Agree",
+        "slug": "candidate-timesheet-agree",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 49,
+    "fields": {
+        "name": "Job Confirmed",
+        "slug": "job-confirmed",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 50,
+    "fields": {
+        "name": "Job Offer 1st\t",
+        "slug": "job-offer-1st",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 51,
+    "fields": {
+        "name": "Job Offer Placement Confirmation",
+        "slug": "job-offer-placement-confirmation",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 52,
+    "fields": {
+        "name": "Job Offer Recurring",
+        "slug": "job-offer-recurring",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 53,
+    "fields": {
+        "name": "Job Offer Rejection",
+        "slug": "job-offer-rejection",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 54,
+    "fields": {
+        "name": "Sms Payment Reminder 24",
+        "slug": "sms-payment-reminder-24",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 55,
+    "fields": {
+        "name": "Sms Payment Reminder 48",
+        "slug": "sms-payment-reminder-48",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "fi",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 56,
+    "fields": {
+        "name": "Candidate Going To Work\t",
+        "slug": "candidate-going-to-work",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 57,
+    "fields": {
+        "name": "Candidate JO Cancelled",
+        "slug": "candidate-jo-cancelled",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 58,
+    "fields": {
+        "name": "Candidate JO Cancelled <1 hrs",
+        "slug": "candidate-jo-cancelled-1-hrs",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 59,
+    "fields": {
+        "name": "Candidate TimeSheet Agree",
+        "slug": "candidate-timesheet-agree",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 60,
+    "fields": {
+        "name": "Job Confirmed",
+        "slug": "job-confirmed",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 61,
+    "fields": {
+        "name": "Job Offer 1st\t",
+        "slug": "job-offer-1st",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 62,
+    "fields": {
+        "name": "Job Offer Placement Confirmation",
+        "slug": "job-offer-placement-confirmation",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 63,
+    "fields": {
+        "name": "Job Offer Recurring",
+        "slug": "job-offer-recurring",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 64,
+    "fields": {
+        "name": "Job Offer Rejection",
+        "slug": "job-offer-rejection",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 65,
+    "fields": {
+        "name": "Sms Payment Reminder 24",
+        "slug": "sms-payment-reminder-24",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+},
+{
+    "model": "email_interface.defaultemailtemplate",
+    "pk": 66,
+    "fields": {
+        "name": "Sms Payment Reminder 48",
+        "slug": "sms-payment-reminder-48",
+        "message_text_template": "",
+        "reply_timeout": 0,
+        "delivery_timeout": 10,
+        "language": "ru",
+        "subject_template": "",
+        "message_html_template": ""
+    }
+}
+]

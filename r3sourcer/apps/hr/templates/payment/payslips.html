@@ -1,0 +1,88 @@
+{% extends "payment/base.html" %}
+{% load i18n l10n static %}
+
+{% block content %}
+{% localize on %}
+  <p>
+    <span class="document-title">TS MEDIA Pty Ltd</span><br>
+    <span><em>ABN.&nbsp; 33 140 648 308</em></span>
+  </p>
+
+  <p>
+    <span class="inner-block">
+      <span class="title">Pay Slip For:&nbsp;</span>
+      <span class="value">{{ candidate.contact.first_name }} {{ candidate.contact.last_name }}</span>
+    </span>
+    <span class="inner-block">
+      <span class="title">Cheque No:&nbsp;</span>
+      <span class="value">{{ payslip.cheque_number }}</span>
+    </span>
+    <br>
+    <span class="inner-block">
+      <span class="title">Classification:&nbsp;</span>
+      <span class="value">{{ candidate.employment_classification.name }}</span>
+    </span>
+    <span class="inner-block">
+      <span class="title">Payment Date:&nbsp;</span>
+      <span class="value">{{ payslip.payment_date }}</span>
+    </span>
+    <br>
+  </p>
+
+  <p>
+    <span class="inner-block">
+      <span class="title">Hourly Rate: &nbsp;</span>
+      <span class="value">${{ payslip.hourly_rate.hourly_rate }}</span>
+    </span>
+    <br>
+    <span class="inner-block">
+      <span class="title">Annual Salary:&nbsp;</span>
+      <span class="value">${{ payslip.annual_salary }}</span>
+    </span>
+  </p>
+
+  <p class="inner-block">
+    <span class="title">Pay Period</span><br>
+    <span class="period">From:&nbsp;</span><span class="date">{{ payslip.from_date }}</span>
+    <span class="period">To:&nbsp;</span><span class="date">{{ payslip.to_date }}</span>
+  </p>
+  <p class="inner-block">
+    <span class="title">GROSS PAY:&nbsp;</span>
+    <span class="value">${{ payslip.get_gross_pay }}</span><br>
+    <span class="title">NET PAY:&nbsp;</span>
+    <span class="value">$</span>
+  </p>
+
+  <p>
+    <span class="inner-block">
+      <span class="title">Superannuation Fund:&nbsp;</span>
+      <span class="value">{{ candidate.superannuation_fund.name }}</span>
+    </span>
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Hours</th>
+        <th>Calc. rate</th>
+        <th>Amount</th>
+        <th>Ytd</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for line in lines %}
+      <tr>
+        <td>{{ line.description }}</td>
+        <td>{{ line.hours }}</td>
+        <td>${{ line.calc_rate }}</td>
+        <td>${{ line.amount }}</td>
+        <td>${{ line.ytd }}</td>
+        <td>{{ line.get_type }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endlocalize %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% load static %}
+
+<link href="{% static 'easy_select2/vendor/select2/css/select2.min.css' %}" type="text/css" media="screen" rel="stylesheet"/>
+<link href="{% static 'easy_select2/css/easy_select2.css' %}" type="text/css" media="screen" rel="stylesheet"/>
+<script type="text/javascript" src="{% static 'easy_select2/vendor/jquery/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'easy_select2/js/init.js' %}"></script>
+<script type="text/javascript" src="{% static 'easy_select2/js/easy_select2.js' %}"></script>
+<script type="text/javascript" src="{% static 'easy_select2/js/lookup_override.1.8.js' %}"></script>
+<script type="text/javascript" src="{% static 'easy_select2/vendor/select2/js/select2.min.js' %}"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('.dropdown-filter').select2();
+      $('tr:not(.empty-form) .dropdown-field').select2();
+  });
+</script>

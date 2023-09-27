@@ -1,0 +1,66 @@
+###########
+# BUILDER #
+###########
+
+# pull official base image
+FROM python:3.8-alpine as builder
+
+# set work directory
+WORKDIR /usr/src/app
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# install source packages dependencies
+RUN apk update && apk upgrade && \
+    apk add --no-cache git postgresql-dev \
+    gcc musl-dev zlib-dev jpeg-dev
+
+# Install dependencies
+COPY ./dependencies/pip_py3.txt .
+RUN pip install --upgrade pip
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r pip_py3.txt
+
+#########
+# FINAL #
+#########
+
+# pull official base image
+FROM python:3.8-alpine
+
+# create directory for the app user
+ENV APP_HOME=/app
+RUN mkdir -p $APP_HOME
+WORKDIR $APP_HOME
+
+# create the app user
+RUN addgroup -S app && adduser -S app -G app
+
+RUN apk update && apk add libpq libjpeg
+
+# install bower
+ENV ALPINE_MIRROR "http://dl-cdn.alpinelinux.org/alpine"
+RUN echo "${ALPINE_MIRROR}/edge/main" >> /etc/apk/repositories
+RUN apk add --no-cache nodejs-current  --repository="http://dl-cdn.alpinelinux.org/alpine/edge/community"
+RUN apk add nodejs nodejs-npm
+RUN npm i -g bower
+
+# install dependencies
+COPY --from=builder /usr/src/app/wheels /wheels
+COPY --from=builder /usr/src/app/pip_py3.txt .
+RUN pip install --upgrade pip setuptools
+RUN pip install --no-cache /wheels/*
+RUN rm -rf /wheels
+
+# copy project
+COPY . $APP_HOME
+
+# chown all the files to the app user
+RUN chown -R app:app $APP_HOME
+
+# change to the app user
+USER app
+
+# run entrypoint.prod.sh
+# ENTRYPOINT ["/home/app/entrypoint.sh"]

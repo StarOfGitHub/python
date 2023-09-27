@@ -1,0 +1,136 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_list compress %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo; {% trans 'Logs' %}
+</div>
+{% endblock %}
+
+{% block extrahead %}
+{% compress js %}
+<script src="{% static 'admin/js/vendor/jquery/jquery.js' %}" type="application/javascript"></script>
+<script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script>
+$(document).ready(function() {
+    $('#change-history').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "paging": true,
+        "ordering": false,
+        "searching": false,
+        "dataType": "json",
+        "ajax": function (data, callback, settings) {
+            $.ajax({
+            url: "/{{stuff_url_prefix}}" + "journal/" + $('select[name=model_name]').val().toLowerCase().replace(".", "/") + "/",
+            dataSrc: 'data',
+            data: {
+                page: data.start/data.length + 1,
+                length: data.length,
+                from: $('input[name=from]').val(),
+                to: $('input[name=to]').val()
+                }
+            })
+            .done(function (data, textStatus, jqXHR) {
+                callback(data);
+            })
+        },
+        "columns": [
+            { "data": "at" },
+            { "data": "by.name" },
+            { "data": "transaction_type" },
+            { "data": "object_id" },
+            {
+                data: null,
+                render: function ( data, type, row ) {
+                    var result = "<table><thead><tr><th scope='col'>{% trans 'Field' %}</th>"
+                                    + "<th scope='col'>{% trans 'Old Value' %}</th>"
+                                    + "<th scope='col'>{% trans 'New Value' %}</th>"
+                                    + "</tr></thead>";
+                    for(var i=0; i < data.diff.length; i++){
+                        result += "<tr><td>" + data.diff[i].field + "</td><td>"+ data.diff[i].old_val
+                                + "</td><td>" + data.diff[i].new_val + "</td></tr>";
+                    }
+                    result += "</table>";
+                    return result;
+                }
+            }
+        ]
+    });
+} );
+</script>
+{% endcompress %}
+
+{% compress css %}
+<link rel="stylesheet" href="{% static 'css/jquery.dataTables.min.css'%}" type="text/css">
+<style>
+    .toolbar_element {
+        display: inline-block;
+        min-width: 25%;
+    }
+
+    .results {
+        margin-top: 20px;
+    }
+</style>
+{% endcompress %}
+{% endblock %}
+
+{% block content %}
+{{from_date}}
+<div id="content-main">
+<div class="module">
+    {% block filters %}
+    <div id="changelist-filter">
+        <h2>{% trans 'Filter' %}</h2>
+            <div class="toolbar">
+                <form id="changelist-search" method="get">
+                    <div class="toolbar_element">
+                        <label>{% trans "Model:" %}</label>
+                        <select name="model_name">
+                            <option>-------</option>
+                            {% for model in model_list %}
+                            <option name="{{model}}"{% if model == selected_model %} selected{% endif %}>{{model}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="toolbar_element">
+                        <label>{% trans "From date:" %}</label>
+                        <input placeholder="2017-04-20 12:00:00" name="from" type="text"
+                               {% if from_date %} value="{{from_date}}" {% endif %}>
+                    </div>
+                    <div class="toolbar_element">
+                        <label>{% trans "To date:" %}</label>
+                        <input placeholder="2017-04-20 12:00:00" name="to" type="text"
+                               {% if to_date %} value="{{to_date}}" {% endif %}>
+                    </div>
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+
+    </div>
+    {% endblock %}
+
+    <div class="results">
+    {% if selected_model %}
+        <table id="change-history">
+            <thead>
+            <tr>
+                <th scope="col">{% trans 'Date/time' %}</th>
+                <th scope="col">{% trans 'User' %}</th>
+                <th scope="col">{% trans 'Transaction' %}</th>
+                <th scope="col">{% trans 'ID' %}</th>
+                <th scope="col">{% trans 'Diff' %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    {% else %}
+        <p>{% trans "Select filters for viewing log history. " %}</p>
+    {% endif %}
+    </div>
+</div>
+</div>
+{% endblock %}

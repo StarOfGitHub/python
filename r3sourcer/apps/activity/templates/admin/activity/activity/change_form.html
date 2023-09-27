@@ -1,0 +1,20 @@
+{% extends "admin/change_select2_form.html" %}
+
+{% load admin_static admin_urls i18n %}
+
+{% block content %}
+    {{ block.super }}
+    <script type="text/javascript">
+        (function($) {
+            jQuery('#id_contact,#id_template').select2({width: 'calc(100% - 92px)'});
+            $(document).on("formset:added", function(prefix, inline) {
+                jQuery(inline).find(".dropdown-field").select2();
+            });
+        }(django.jQuery))
+    </script>
+{% endblock %}
+
+{% block object-tools-items %}
+    <li class="active"><a href="{{ repeat_url }}" class="deletelink">{% trans "Schedule repeat" %}</a></li>
+    {{ block.super }}
+{% endblock %}
